@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void Jump()
 	{
+		
 		if (jumpAmount-- > 0) 
 		{
 			character.velocity = new Vector3 (character.velocity.x, 0, 0);
@@ -42,7 +43,16 @@ public class PlayerMovement : MonoBehaviour
 		if (coll.gameObject.layer == 8) 
 		{
 			jumpAmount = jumpMax;
-			print ("Grounded");
+			print ("grounded");
 		}
 	}
+
+//	void OnCollisionExit(Collision coll)
+//	{
+//		if (coll.gameObject.layer == 8) 
+//		{
+//			jumpAmount = 1;
+//			print ("not grounded");
+//		}
+//	}
 }

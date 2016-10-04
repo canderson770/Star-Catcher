@@ -4,31 +4,28 @@ using System.Collections.Generic;
 
 public class LandSpawn : MonoBehaviour 
 {
-	public Vector3 spawnPoint;
+	Vector3 otherSpawn;
 	public List<GameObject> landModules;
-	public int lastModule = 1;
-	public int randomNum = 0;
-
+	int randomNum = 0;
 
 	void OnTriggerEnter ()
 	{
-		print ("hit");
-//		randomNum = Random.Range (0, landModules.Count - 1);
-//
-//		while (randomNum == lastModule)
-//		{
-//			print ("same");
-//			randomNum = Random.Range (0, landModules.Count - 1);
-//		}
-//		
-		Instantiate (landModules [Random.Range (0, landModules.Count - 1)], spawnPoint, Quaternion.identity);
+		randomNum = Random.Range (0, landModules.Count);
 
-//		lastModule = randomNum;
+		if (randomNum == StaticVars.lastModule)
+			while (randomNum == StaticVars.lastModule) 
+			{
+				randomNum = Random.Range (0, landModules.Count);
+			}
+		
+		otherSpawn = new Vector3 (90, 0, 0) + transform.position;
+		Instantiate (landModules [randomNum], otherSpawn, Quaternion.identity);
+		StaticVars.lastModule = randomNum;
+
 	}
 	
 	void OnTriggerExit () 
 	{
-		print ("delete");
 		Destroy (gameObject);
 	}
 }
