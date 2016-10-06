@@ -46,13 +46,19 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraMove.cs" />
-     <Compile Include="Assets\Scripts\DeathScript.cs" />
-     <Compile Include="Assets\Scripts\DetailFall.cs" />
-     <Compile Include="Assets\Scripts\DetailFallCactus.cs" />
-     <Compile Include="Assets\Scripts\DetailSpawner.cs" />
-     <Compile Include="Assets\Scripts\LandSpawn.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Land\DetailFall.cs" />
+     <Compile Include="Assets\Scripts\Land\DetailFallCactus.cs" />
+     <Compile Include="Assets\Scripts\Land\DetailSpawner.cs" />
+     <Compile Include="Assets\Scripts\Land\LandSpawn.cs" />
+     <Compile Include="Assets\Scripts\Player\DeathScript.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Player\StarCatch.cs" />
+     <Compile Include="Assets\Scripts\Star\SetAsSpawnPoint.cs" />
+     <Compile Include="Assets\Scripts\Star\StarControl.cs" />
+     <Compile Include="Assets\Scripts\Star\StarSpawner.cs" />
      <Compile Include="Assets\Scripts\StaticVars.cs" />
+     <Compile Include="Assets\Scripts\UI\DistanceText.cs" />
+     <Compile Include="Assets\Scripts\UI\StarsText.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

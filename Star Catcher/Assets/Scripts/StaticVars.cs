@@ -5,6 +5,12 @@ using System.Collections.Generic;
 
 public class StaticVars : MonoBehaviour 
 {
-	public List<GameObject> landModules;
 	public static float lastModule = 1;
+	public static int starCount;
+	public static bool isPaused = false;
+
+	public static void Reset()
+	{
+		starCount = 0;
+	}
 }
