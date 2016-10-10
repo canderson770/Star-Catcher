@@ -14,11 +14,23 @@ public class DetailFall : MonoBehaviour
 	{
 		if (coll.gameObject.layer == 8) 
 		{
-//			detailRb.isKinematic = true;
-			transform.parent = coll.gameObject.transform;
+			WaitForKinematic ();
+
+			if(gameObject.layer == 0)
+				gameObject.layer = coll.gameObject.layer;
+
+			detailRb.isKinematic = true;
+
+//			transform.parent = coll.gameObject.transform;
 		}
 	}
 
+
+	IEnumerator WaitForKinematic()
+	{
+		yield return new WaitForSeconds (4);
+//		detailRb.isKinematic = true;
+	}
 
 	void OnTriggerExit () 
 	{

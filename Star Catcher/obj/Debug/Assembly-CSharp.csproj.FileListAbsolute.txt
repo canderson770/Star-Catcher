@@ -19,3 +19,6 @@ C:\Users\Cody\Documents\Game\Star Catcher\Temp\bin\Debug\UnityEngine.Networking.
 C:\Users\Cody\Documents\Game\Star Catcher\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\Cody\Documents\Game\Star Catcher\obj\Debug\Assembly-CSharp.dll
 C:\Users\Cody\Documents\Game\Star Catcher\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Cody\Documents\Game-Essentials\Star Catcher\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Cody\Documents\Game-Essentials\Star Catcher\obj\Debug\Assembly-CSharp.dll
+C:\Users\Cody\Documents\Game-Essentials\Star Catcher\obj\Debug\Assembly-CSharp.pdb

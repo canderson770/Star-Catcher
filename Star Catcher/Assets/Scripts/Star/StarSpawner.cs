@@ -7,6 +7,7 @@ public class StarSpawner : MonoBehaviour
 	public List<Transform> spawnPoints;
 	public GameObject star;
 	public float spawnSeconds = 1f;
+	public float beginningWait;
 
 	void Start()
 	{
@@ -18,10 +19,10 @@ public class StarSpawner : MonoBehaviour
 
 	IEnumerator Spawn()
 	{
+		yield return new WaitForSeconds (beginningWait);
+
 		while (!StaticVars.isPaused)
 		{
-			yield return new WaitForSeconds (3);
-
 			Instantiate (star, spawnPoints [Random.Range (0, spawnPoints.Count)].position, Quaternion.identity);
 
 			yield return new WaitForSeconds (spawnSeconds);

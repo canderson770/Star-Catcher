@@ -12,11 +12,11 @@ public class LandSpawn : MonoBehaviour
 	{
 		randomNum = Random.Range (0, landModules.Count);
 
-		if (randomNum == StaticVars.lastModule)
-			while (randomNum == StaticVars.lastModule) 
-			{
-				randomNum = Random.Range (0, landModules.Count);
-			}
+//			if (randomNum == StaticVars.lastModule)
+//			while (randomNum == StaticVars.lastModule) 
+//			{
+//				randomNum = Random.Range (0, landModules.Count);
+//			}
 		
 		otherSpawn = new Vector3 (90, 0, 0) + transform.position;
 		Instantiate (landModules [randomNum], otherSpawn, Quaternion.identity);

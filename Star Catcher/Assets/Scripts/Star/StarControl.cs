@@ -8,6 +8,8 @@ public class StarControl : MonoBehaviour
 
 	public float force = 100;
 	public float lifetime = 3;
+	public float upForce;
+	public float zforce;
 
 	void Start()
 	{
@@ -19,16 +21,9 @@ public class StarControl : MonoBehaviour
 		else
 			randomDir = -1;
 		
-		starRB.AddForce (new Vector3(Random.Range(force/2, force) * randomDir, 0, 0), ForceMode.VelocityChange);
+		starRB.AddForce (new Vector3(Random.Range(force/2, force) * randomDir, upForce, zforce), ForceMode.VelocityChange);
 
-		WaitToDestroy ();
-	}
-
-	IEnumerator WaitToDestroy()
-	{
-		yield return new WaitForSeconds (lifetime);
-		print ("destroy");
-		Destroy (gameObject);
+		Destroy (gameObject, lifetime);
 	}
 
 	void OnCollisionEnter(Collision coll)

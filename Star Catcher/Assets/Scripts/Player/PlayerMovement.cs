@@ -12,19 +12,17 @@ public class PlayerMovement : MonoBehaviour
 	Rigidbody character;
 	SpriteRenderer rabbitSprite;
 	Animator anim;
-	SphereCollider sphereColl;
-
 
 	void Start()
 	{
 		character = GetComponent<Rigidbody> ();
 		rabbitSprite = GetComponent<SpriteRenderer> ();
 		anim = GetComponent<Animator> ();
-		sphereColl = GetComponent<SphereCollider> ();
 	}
 
 	void Update()
 	{
+//		if (Input.GetAxis ("Horizontal") != 0)
 		Move (Input.GetAxis ("Horizontal"));
 
 		if (Input.GetKeyUp(KeyCode.Space))
@@ -34,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
 	void Move(float _moveInput)
 	{
 		character.transform.Translate(_moveInput * speed * Time.deltaTime, 0, 0);
+//		character.velocity = new Vector3(1, character.velocity.y, 0) * _moveInput * speed;
 
 		if (_moveInput == 0)
 			anim.SetBool ("isMoving", false);
@@ -43,12 +42,10 @@ public class PlayerMovement : MonoBehaviour
 		if (_moveInput < 0) 
 		{
 			rabbitSprite.flipX = true;
-			sphereColl.center = new Vector3 (-1.5f, .5f, 0);
 		}
 		if (_moveInput > 0)
 		{
 			rabbitSprite.flipX = false;
-			sphereColl.center = new Vector3 (1.5f, .5f, 0);
 		}
 	}
 
@@ -57,10 +54,14 @@ public class PlayerMovement : MonoBehaviour
 		
 		if (jumpAmount-- > 0) 
 		{
-			character.velocity = new Vector3 (character.velocity.x, 0, 0);
 			anim.PlayInFixedTime ("rabbit_jumpSquat");
-			character.AddForce (Vector3.up * jumpSpeed, ForceMode.Impulse);
 		}
+	}
+
+	public void upJump()
+	{
+		character.velocity = new Vector3 (character.velocity.x, 0, 0);
+		character.AddForce (Vector3.up * jumpSpeed, ForceMode.Impulse);
 	}
 
 	void OnCollisionEnter(Collision coll)

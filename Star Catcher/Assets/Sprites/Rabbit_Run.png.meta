@@ -1,21 +1,21 @@
 fileFormatVersion: 2
-guid: 6d256724ad403614696351f91bb9aa16
-timeCreated: 1475685592
+guid: ffde04c20763ef34c9c1ba50c508ef33
+timeCreated: 1475855342
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Rabbit_Run_0
-    21300002: Rabbit_Run_1
-    21300004: Rabbit_Run_2
-    21300006: Rabbit_Run_3
-    21300008: Rabbit_Run_4
-    21300010: Rabbit_Run_5
-    21300012: Rabbit_Run_6
-    21300014: Rabbit_Run_7
+    21300000: Rabbit_Run1_0
+    21300002: Rabbit_Run1_1
+    21300004: Rabbit_Run1_2
+    21300006: Rabbit_Run1_3
+    21300008: Rabbit_Run1_4
+    21300010: Rabbit_Run1_5
+    21300012: Rabbit_Run1_6
+    21300014: Rabbit_Run1_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -38,7 +38,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: 16
+    aniso: 1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -61,7 +61,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rabbit_Run_0
+      name: Rabbit_Run1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -69,51 +69,51 @@ TextureImporter:
         width: 2560
         height: 1440
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Rabbit_Run_1
+      name: Rabbit_Run1_1
       rect:
         serializedVersion: 2
         x: 2560
         y: 1440
         width: 2560
         height: 1440
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Rabbit_Run_2
+      name: Rabbit_Run1_2
       rect:
         serializedVersion: 2
         x: 5120
         y: 1440
         width: 2560
         height: 1440
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Rabbit_Run_3
+      name: Rabbit_Run1_3
       rect:
         serializedVersion: 2
         x: 7680
         y: 1440
         width: 2560
         height: 1440
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Rabbit_Run_4
+      name: Rabbit_Run1_4
       rect:
         serializedVersion: 2
         x: 0
@@ -121,46 +121,46 @@ TextureImporter:
         width: 2560
         height: 1440
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Rabbit_Run_5
+      name: Rabbit_Run1_5
       rect:
         serializedVersion: 2
         x: 2560
         y: 0
         width: 2560
         height: 1440
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Rabbit_Run_6
+      name: Rabbit_Run1_6
       rect:
         serializedVersion: 2
         x: 5120
         y: 0
         width: 2560
         height: 1440
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Rabbit_Run_7
+      name: Rabbit_Run1_7
       rect:
         serializedVersion: 2
         x: 7680
         y: 0
         width: 2560
         height: 1440
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

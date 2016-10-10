@@ -1,8 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\StaticVars.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Land\DetailSpawner.cs">
     <Files>
-      <File FileName="Assets\Scripts\StaticVars.cs" Line="14" Column="1" />
+      <File FileName="Assets\Scripts\StaticVars.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Land\DetailSpawner.cs" Line="16" Column="19" />
+      <File FileName="Assets\Scripts\Land\LandSpawn.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Land\DetailFallCactus.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Land\DetailFall.cs" Line="22" Column="4" />
+      <File FileName="Assets\Scripts\Player\StarCatch.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Star\StarControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\DeathScript.cs" Line="43" Column="59" />
+      <File FileName="Assets\Scripts\Star\StarSpawner.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\PlayerMovement.cs" Line="33" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

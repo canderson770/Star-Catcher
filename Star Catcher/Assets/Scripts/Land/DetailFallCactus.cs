@@ -15,7 +15,7 @@ public class DetailFallCactus : MonoBehaviour
 		if (coll.gameObject.layer == 8) 
 		{
 			detailRb.isKinematic = true;
-			transform.parent = coll.gameObject.transform;
+//			transform.parent = coll.gameObject.transform;
 		}
 	}
 
