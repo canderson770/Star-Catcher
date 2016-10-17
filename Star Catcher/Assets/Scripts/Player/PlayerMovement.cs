@@ -51,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
 
 	void Jump()
 	{
-		
 		if (jumpAmount-- > 0) 
 		{
 			anim.PlayInFixedTime ("rabbit_jumpSquat");
@@ -61,16 +60,17 @@ public class PlayerMovement : MonoBehaviour
 	public void upJump()
 	{
 		character.velocity = new Vector3 (character.velocity.x, 0, 0);
-		character.AddForce (Vector3.up * jumpSpeed, ForceMode.Impulse);
+		character.AddForce (Vector3.up * jumpSpeed, ForceMode.VelocityChange);
 	}
 
 	void OnCollisionEnter(Collision coll)
 	{
 		if (coll.gameObject.layer == 8) 
 		{
+//			print ("grounded");
 			jumpAmount = jumpMax;
 			anim.SetBool ("isGrounded", true);
-//			print ("grounded");
+
 		}
 	}
 
@@ -78,9 +78,9 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (coll.gameObject.layer == 8) 
 		{
-//			jumpAmount = 1;
-			anim.SetBool ("isGrounded", false);
 //			print ("not grounded");
+			anim.SetBool ("isGrounded", false);
+
 		}
 	}
 }

@@ -1,31 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class DeathScript : MonoBehaviour 
 {
-	Scene scene;
 	Rigidbody rabbitRB;
 
-	public GameObject star;
+	public GameObject fakeStar;
+	public GameObject wolf;
+	public GameObject deathPanel;
 
 	void Start()
 	{
-		scene = SceneManager.GetActiveScene ();
 		rabbitRB = GetComponent<Rigidbody> ();
 	}
 
 	void OnTriggerEnter(Collider coll)
 	{
-		if (coll.gameObject.layer == 11) 
+		if (coll.gameObject.layer == 11 /*DeathZone*/ || coll.gameObject.layer == 20 /*Wolf*/) 
 		{
 			Death ();
+		}
+
+		if (coll.gameObject.layer == 19 /*Wolf Trigger*/) 
+		{
+			Instantiate (wolf, coll.transform.parent.transform.position + new Vector3(45, 5.1f,0), wolf.transform.rotation);
+			Destroy (coll.gameObject);
 		}
 	}	
 
 	void OnCollisionEnter(Collision coll)
 	{
-		if (coll.gameObject.layer == 18)  
+		if (coll.gameObject.layer == 18 /*DeathObstacles*/)  
 		{
 			if (StaticVars.starCount > 0) 
 			{
@@ -38,19 +43,19 @@ public class DeathScript : MonoBehaviour
 
 	void Hit()
 	{
-		print ("hit");
 		rabbitRB.velocity = new Vector3 (rabbitRB.velocity.x, 0, 0);
 		rabbitRB.AddForce (new Vector3 (Random.Range(-10,10), 15, 0), ForceMode.Impulse);
 
-		for(int i = 0; i < (StaticVars.starCount - StaticVars.starCount/2); i++)
-			Instantiate (star, transform.position, Quaternion.identity);
+		for(int i = 0; i < (StaticVars.starCount /*- StaticVars.starCount/2*/); i++)
+			Instantiate (fakeStar, transform.position, Quaternion.identity);
 
-		StaticVars.starCount = StaticVars.starCount/2;
+		StaticVars.starCount = 0;
 	}
 
 	void Death()
 	{
-		SceneManager.LoadScene (scene.name);
-		StaticVars.Reset ();
+		StaticVars.gameOver = true;
+		StaticVars.isPaused = true;
+		deathPanel.SetActive (true);
 	}
 }

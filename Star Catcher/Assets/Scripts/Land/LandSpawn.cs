@@ -18,7 +18,7 @@ public class LandSpawn : MonoBehaviour
 //				randomNum = Random.Range (0, landModules.Count);
 //			}
 		
-		otherSpawn = new Vector3 (90, 0, 0) + transform.position;
+		otherSpawn = new Vector3 (45, 0, 0) + transform.position;
 		Instantiate (landModules [randomNum], otherSpawn, Quaternion.identity);
 		StaticVars.lastModule = randomNum;
 

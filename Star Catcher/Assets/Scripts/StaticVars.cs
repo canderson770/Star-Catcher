@@ -8,9 +8,13 @@ public class StaticVars : MonoBehaviour
 	public static float lastModule = 1;
 	public static int starCount;
 	public static bool isPaused = false;
+	public static bool gameOver = false;
+
 
 	public static void Reset()
 	{
 		starCount = 0;
+		gameOver = false;
+		isPaused = false;
 	}
 }

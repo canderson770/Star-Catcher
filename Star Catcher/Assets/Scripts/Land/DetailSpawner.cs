@@ -7,16 +7,20 @@ public class DetailSpawner : MonoBehaviour
 	public List<GameObject> spawnpoints;
 	public List<GameObject> details;
 	bool onOff = true;
-
+	int randomNum;
 
 	void Start () 
 	{
 		foreach(GameObject spawnPoint in spawnpoints)
 		{
-			onOff = (Random.value > 0.5f);
+//			onOff = (Random.value > 0.5f);
 			if (onOff)
 			{
-				Instantiate (details[Random.Range (0, details.Count)], spawnPoint.transform.position, Quaternion.identity);
+				randomNum = Random.Range (0, details.Count);
+				if (details[randomNum].layer == 13)
+					Instantiate (details[randomNum], spawnPoint.transform.position, Quaternion.identity);
+				else
+					Instantiate (details[randomNum], spawnPoint.transform.position, spawnPoint.transform.rotation);
 			}
 		}
 

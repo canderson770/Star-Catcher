@@ -46,8 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraMove.cs" />
-     <Compile Include="Assets\Scripts\Land\DetailFall.cs" />
-     <Compile Include="Assets\Scripts\Land\DetailFallCactus.cs" />
+     <Compile Include="Assets\Scripts\Land\DetailDestroy.cs" />
      <Compile Include="Assets\Scripts\Land\DetailSpawner.cs" />
      <Compile Include="Assets\Scripts\Land\LandSpawn.cs" />
      <Compile Include="Assets\Scripts\Player\DeathScript.cs" />
@@ -59,6 +58,8 @@
      <Compile Include="Assets\Scripts\StaticVars.cs" />
      <Compile Include="Assets\Scripts\UI\DistanceText.cs" />
      <Compile Include="Assets\Scripts\UI\StarsText.cs" />
+     <Compile Include="Assets\Scripts\UI\UIScript.cs" />
+     <Compile Include="Assets\Scripts\WolfControl.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
