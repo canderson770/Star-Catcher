@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 861d286bb3ec3524cb812e4e42623da2
-timeCreated: 1476387469
+guid: eae364abfdc2b7e4489997256ab1a557
+timeCreated: 1476718698
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,7 +10,6 @@ TextureImporter:
     21300006: rabbit_blink_3
     21300008: rabbit_blink_4
     21300010: rabbit_blink_5
-    21300012: rabbit_blink_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -60,26 +59,39 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+      name: rabbit_blink_0
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 141
+        width: 1639
+        height: 1459
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
       name: rabbit_blink_1
       rect:
         serializedVersion: 2
-        x: 244
-        y: 146
-        width: 1632
-        height: 1454
+        x: 2221
+        y: 141
+        width: 1638
+        height: 1459
       alignment: 9
       pivot: {x: 0.5, y: 0.45}
-      border: {x: 0, y: 0, z: 0, w: 9}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: rabbit_blink_2
       rect:
         serializedVersion: 2
-        x: 2226
-        y: 146
-        width: 1628
-        height: 1454
+        x: 4198
+        y: 141
+        width: 1644
+        height: 1459
       alignment: 9
       pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -89,10 +101,10 @@ TextureImporter:
       name: rabbit_blink_3
       rect:
         serializedVersion: 2
-        x: 4203
-        y: 146
-        width: 1633
-        height: 1454
+        x: 6180
+        y: 141
+        width: 1639
+        height: 1459
       alignment: 9
       pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -102,10 +114,10 @@ TextureImporter:
       name: rabbit_blink_4
       rect:
         serializedVersion: 2
-        x: 6186
-        y: 146
-        width: 1627
-        height: 1454
+        x: 8159
+        y: 141
+        width: 1637
+        height: 1459
       alignment: 9
       pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,23 +127,10 @@ TextureImporter:
       name: rabbit_blink_5
       rect:
         serializedVersion: 2
-        x: 8163
-        y: 146
-        width: 1633
-        height: 1454
-      alignment: 9
-      pivot: {x: 0.5, y: 0.45}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: rabbit_blink_6
-      rect:
-        serializedVersion: 2
-        x: 10003
-        y: 146
-        width: 1627
-        height: 1454
+        x: 9997
+        y: 141
+        width: 1638
+        height: 1459
       alignment: 9
       pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}

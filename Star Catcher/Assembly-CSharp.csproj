@@ -45,18 +45,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BGScroll.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
+     <Compile Include="Assets\Scripts\DontDestroy.cs" />
+     <Compile Include="Assets\Scripts\Grounded.cs" />
      <Compile Include="Assets\Scripts\Land\DetailDestroy.cs" />
      <Compile Include="Assets\Scripts\Land\DetailSpawner.cs" />
      <Compile Include="Assets\Scripts\Land\LandSpawn.cs" />
-     <Compile Include="Assets\Scripts\Player\DeathScript.cs" />
-     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerCollisons.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\StarCatch.cs" />
      <Compile Include="Assets\Scripts\Star\SetAsSpawnPoint.cs" />
      <Compile Include="Assets\Scripts\Star\StarControl.cs" />
      <Compile Include="Assets\Scripts\Star\StarSpawner.cs" />
      <Compile Include="Assets\Scripts\StaticVars.cs" />
      <Compile Include="Assets\Scripts\UI\DistanceText.cs" />
+     <Compile Include="Assets\Scripts\UI\Pause.cs" />
      <Compile Include="Assets\Scripts\UI\StarsText.cs" />
      <Compile Include="Assets\Scripts\UI\UIScript.cs" />
      <Compile Include="Assets\Scripts\WolfControl.cs" />

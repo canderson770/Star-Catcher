@@ -4,33 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class UIScript : MonoBehaviour
 {
-	Scene scene;
-
-	public GameObject pausedPanel;
-
-	void Start()
-	{
-		scene = SceneManager.GetActiveScene ();
-	}
-
-	void Update ()
-	{
-		if (Input.GetKeyDown (KeyCode.Escape))
-			Pause ();
-
-		if (StaticVars.isPaused) 
-		{
-			Time.timeScale = 0;
-
-			if (!StaticVars.gameOver)
-				pausedPanel.SetActive (true);
-		}
-		else
-		{
-			Time.timeScale = 1;
-			pausedPanel.SetActive (false);
-		}	
-	}
 
 	public void Pause()
 	{
@@ -40,12 +13,13 @@ public class UIScript : MonoBehaviour
 	public void Restart()
 	{
 		StaticVars.Reset ();
-		SceneManager.LoadScene (scene.name);
+		SceneManager.LoadScene (2);
 	}
 
 	public void MainMenu()
 	{
-		SceneManager.LoadScene ("Main Menu");
+		SceneManager.LoadScene (1);
+		StaticVars.isPaused = false;
 	}
 
 	public void Quit()
