@@ -5,8 +5,9 @@ public class PlayerController : MonoBehaviour
 {
 	public float speed = 5;
 	public float jumpSpeed = 400;
-	public float jumpMax = 2;
-	float jumpAmount = 2;
+	bool isGrounded = true;
+	bool hasDoubleJump = false;
+
 
 	Rigidbody character;
 	SpriteRenderer rabbitSprite;
@@ -17,6 +18,18 @@ public class PlayerController : MonoBehaviour
 		character = GetComponent<Rigidbody> ();
 		rabbitSprite = GetComponent<SpriteRenderer> ();
 		anim = GetComponent<Animator> ();
+	}
+
+	void FixedUpdate()
+	{
+//		isGrounded = Physics.Raycast (transform.position, Vector3.down, 2f);
+//			|| Physics.Raycast(transform.position + Vector3.right * 2, Vector3.down, 4.4f, ground);
+
+//		anim.SetBool ("isGrounded", isGrounded);
+		print (isGrounded);
+
+		if (isGrounded)
+			hasDoubleJump = true;
 	}
 
 	void Update()
@@ -45,8 +58,11 @@ public class PlayerController : MonoBehaviour
 
 	void Jump()
 	{
-		if (jumpAmount-- > 0) 
+		if (isGrounded || hasDoubleJump) 
 		{
+			if (!isGrounded && hasDoubleJump)
+				hasDoubleJump = false;
+			
 			anim.PlayInFixedTime ("rabbit_jumpSquat");
 		}
 	}
@@ -62,9 +78,9 @@ public class PlayerController : MonoBehaviour
 		if (coll.gameObject.layer == 8) 
 		{
 //			print ("grounded");
-			jumpAmount = jumpMax;
-			anim.SetBool ("isGrounded", true);
-
+			isGrounded = true;
+			hasDoubleJump = true;
+			anim.SetBool ("isGrounded", isGrounded);
 		}
 	}
 
@@ -73,7 +89,8 @@ public class PlayerController : MonoBehaviour
 		if (coll.gameObject.layer == 8) 
 		{
 //			print ("not grounded");
-			anim.SetBool ("isGrounded", false);
+			isGrounded = false;
+			anim.SetBool ("isGrounded", isGrounded);
 
 		}
 	}

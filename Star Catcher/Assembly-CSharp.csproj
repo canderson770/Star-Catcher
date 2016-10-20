@@ -47,8 +47,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BGScroll.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
-     <Compile Include="Assets\Scripts\DontDestroy.cs" />
-     <Compile Include="Assets\Scripts\Grounded.cs" />
      <Compile Include="Assets\Scripts\Land\DetailDestroy.cs" />
      <Compile Include="Assets\Scripts\Land\DetailSpawner.cs" />
      <Compile Include="Assets\Scripts\Land\LandSpawn.cs" />

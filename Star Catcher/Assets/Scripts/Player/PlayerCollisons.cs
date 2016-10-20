@@ -35,25 +35,25 @@ public class PlayerCollisons : MonoBehaviour
 	{
 		if (coll.gameObject.layer == 18 /*DeathObstacles*/)  
 		{
-			if (StaticVars.starCount > 0) 
-			{
-				Hit ();
-			}
-			else
-				Death ();
+			Hit ();
 		}
 	}
 
 	void Hit()
 	{
-		rabbitRB.velocity = new Vector3 (rabbitRB.velocity.x, 0, 0);
-		rabbitRB.AddForce (new Vector3 (Random.Range(-10,10), 15, 0), ForceMode.Impulse);
+		if (StaticVars.starCount > 0) 
+		{
+			rabbitRB.velocity = new Vector3 (rabbitRB.velocity.x, 0, 0);
+			rabbitRB.AddForce (new Vector3 (Random.Range (-10, 10), 15, 0), ForceMode.Impulse);
 
-		for(int i = 0; i < (StaticVars.starCount /*- StaticVars.starCount/2*/); i++)
-			Instantiate (fakeStar, transform.position, Quaternion.identity);
+			for (int i = 0; i < (StaticVars.starCount /*- StaticVars.starCount/2*/); i++)
+				Instantiate (fakeStar, transform.position, Quaternion.identity);
 
-		anim.Play ("rabbit_hit");
-		StaticVars.starCount = 0;
+			anim.Play ("rabbit_hit");
+			StaticVars.starCount = 0;
+		} else
+			Death ();
+
 	}
 
 	void Death()

@@ -11,10 +11,6 @@ public class WolfControl : MonoBehaviour
 	{
 		wolfRb = GetComponent<Rigidbody> ();
 		wolfRb.AddForce (new Vector3 (-wolfSpeed, 0, 0), ForceMode.VelocityChange);
-	}
-
-	void OnTriggerExit()
-	{
-		Destroy (gameObject, 3);
+		Destroy (gameObject, 5);
 	}
 }
