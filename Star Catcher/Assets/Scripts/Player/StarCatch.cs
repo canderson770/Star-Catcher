@@ -10,6 +10,7 @@ public class StarCatch : MonoBehaviour
 		{
 			Destroy (coll.gameObject.transform.parent.gameObject);
 			StaticVars.starCount++; 
+			StaticVars.starBarCount++;
 		}	
 	}
 }

@@ -47,9 +47,10 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BGScroll.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
-     <Compile Include="Assets\Scripts\Land\DetailDestroy.cs" />
-     <Compile Include="Assets\Scripts\Land\DetailSpawner.cs" />
-     <Compile Include="Assets\Scripts\Land\LandSpawn.cs" />
+     <Compile Include="Assets\Scripts\Ground\DetailSpawner.cs" />
+     <Compile Include="Assets\Scripts\Ground\GroundChecker.cs" />
+     <Compile Include="Assets\Scripts\Ground\GroundDestroy.cs" />
+     <Compile Include="Assets\Scripts\Ground\LandSpawn.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerCollisons.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\StarCatch.cs" />
@@ -57,9 +58,12 @@
      <Compile Include="Assets\Scripts\Star\StarControl.cs" />
      <Compile Include="Assets\Scripts\Star\StarSpawner.cs" />
      <Compile Include="Assets\Scripts\StaticVars.cs" />
+     <Compile Include="Assets\Scripts\UI\CountdownText.cs" />
      <Compile Include="Assets\Scripts\UI\DistanceText.cs" />
      <Compile Include="Assets\Scripts\UI\Pause.cs" />
      <Compile Include="Assets\Scripts\UI\StarsText.cs" />
+     <Compile Include="Assets\Scripts\UI\TimeText.cs" />
+     <Compile Include="Assets\Scripts\UI\UIBar.cs" />
      <Compile Include="Assets\Scripts\UI\UIScript.cs" />
      <Compile Include="Assets\Scripts\WolfControl.cs" />
  <Reference Include="UnityEngine.UI">

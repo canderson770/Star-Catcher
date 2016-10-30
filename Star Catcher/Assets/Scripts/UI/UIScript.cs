@@ -4,6 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class UIScript : MonoBehaviour
 {
+	public float levelTime = 120;
+
+	void Start()
+	{
+		StaticVars.time = levelTime;	
+	}
 
 	public void Pause()
 	{
@@ -13,12 +19,12 @@ public class UIScript : MonoBehaviour
 	public void Restart()
 	{
 		StaticVars.Reset ();
-		SceneManager.LoadScene (2);
+		SceneManager.LoadScene (1);
 	}
 
 	public void MainMenu()
 	{
-		SceneManager.LoadScene (1);
+		SceneManager.LoadScene (0);
 		StaticVars.isPaused = false;
 	}
 

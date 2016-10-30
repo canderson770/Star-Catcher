@@ -5,9 +5,8 @@ public class PlayerController : MonoBehaviour
 {
 	public float speed = 5;
 	public float jumpSpeed = 400;
-	bool isGrounded = true;
 	bool hasDoubleJump = false;
-
+	public LayerMask ground;
 
 	Rigidbody character;
 	SpriteRenderer rabbitSprite;
@@ -20,20 +19,13 @@ public class PlayerController : MonoBehaviour
 		anim = GetComponent<Animator> ();
 	}
 
-	void FixedUpdate()
-	{
-//		isGrounded = Physics.Raycast (transform.position, Vector3.down, 2f);
-//			|| Physics.Raycast(transform.position + Vector3.right * 2, Vector3.down, 4.4f, ground);
-
-//		anim.SetBool ("isGrounded", isGrounded);
-		print (isGrounded);
-
-		if (isGrounded)
-			hasDoubleJump = true;
-	}
-
 	void Update()
 	{
+		anim.SetBool ("isGrounded", StaticVars.isGrounded);;
+
+		if (StaticVars.isGrounded)
+			hasDoubleJump = true;
+		
 		Move (Input.GetAxis ("Horizontal"));
 
 		if (Input.GetKeyUp(KeyCode.Space))
@@ -48,19 +40,19 @@ public class PlayerController : MonoBehaviour
 
 		if (_moveInput < 0) 
 		{
-			rabbitSprite.flipX = true;
+			transform.rotation = Quaternion.Euler(0, 180, 0);
 		}
 		if (_moveInput > 0)
 		{
-			rabbitSprite.flipX = false;
+			transform.rotation = Quaternion.Euler(0, 0, 0);
 		}
 	}
 
 	void Jump()
 	{
-		if (isGrounded || hasDoubleJump) 
+		if (StaticVars.isGrounded || hasDoubleJump) 
 		{
-			if (!isGrounded && hasDoubleJump)
+			if (!StaticVars.isGrounded && hasDoubleJump)
 				hasDoubleJump = false;
 			
 			anim.PlayInFixedTime ("rabbit_jumpSquat");
@@ -71,27 +63,5 @@ public class PlayerController : MonoBehaviour
 	{
 		character.velocity = new Vector3 (character.velocity.x, 0, 0);
 		character.AddForce (Vector3.up * jumpSpeed, ForceMode.VelocityChange);
-	}
-
-	void OnCollisionEnter(Collision coll)
-	{
-		if (coll.gameObject.layer == 8) 
-		{
-//			print ("grounded");
-			isGrounded = true;
-			hasDoubleJump = true;
-			anim.SetBool ("isGrounded", isGrounded);
-		}
-	}
-
-	void OnCollisionExit(Collision coll)
-	{
-		if (coll.gameObject.layer == 8) 
-		{
-//			print ("not grounded");
-			isGrounded = false;
-			anim.SetBool ("isGrounded", isGrounded);
-
-		}
 	}
 }

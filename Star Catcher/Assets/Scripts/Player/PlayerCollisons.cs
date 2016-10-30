@@ -5,10 +5,12 @@ public class PlayerCollisons : MonoBehaviour
 {
 	Rigidbody rabbitRB;
 	Animator anim;
+	bool isInvincible;
 
 	public GameObject fakeStar;
 	public GameObject wolf;
-	public GameObject deathPanel;
+
+	public float invincibleSec = 3;
 
 	void Start()
 	{
@@ -18,31 +20,30 @@ public class PlayerCollisons : MonoBehaviour
 
 	void OnTriggerEnter(Collider coll)
 	{
-		if (coll.gameObject.layer == 11 /*DeathZone*/) 
-			Death ();
-
-		else if (coll.gameObject.layer == 20 /*Wolf*/)
-			Hit ();
-
-		else if (coll.gameObject.layer == 19 /*Wolf Trigger*/) 
-		{
-			Instantiate (wolf, coll.transform.parent.transform.position + new Vector3(45, 5.4f,0), wolf.transform.rotation);
-			Destroy (coll.gameObject);
+		if (!isInvincible) {
+			if (coll.gameObject.layer == 11 /*DeathZone*/)
+				StaticVars.GameOver ();
+			else if (coll.gameObject.layer == 20 /*Wolf*/)
+				Hit ();
+			else if (coll.gameObject.layer == 19 /*Wolf Trigger*/) {
+				Instantiate (wolf, coll.transform.parent.transform.position + new Vector3 (45, 5.4f, 0), wolf.transform.rotation);
+				Destroy (coll.gameObject);
+			}
 		}
 	}	
 
 	void OnCollisionEnter(Collision coll)
 	{
-		if (coll.gameObject.layer == 18 /*DeathObstacles*/)  
-		{
-			Hit ();
+		if (!isInvincible) {
+			if (coll.gameObject.layer == 18 /*DeathObstacles*/) {
+				Hit ();
+			}
 		}
 	}
 
 	void Hit()
 	{
-		if (StaticVars.starCount > 0) 
-		{
+		if (StaticVars.starCount > 0) {
 			rabbitRB.velocity = new Vector3 (rabbitRB.velocity.x, 0, 0);
 			rabbitRB.AddForce (new Vector3 (Random.Range (-10, 10), 15, 0), ForceMode.Impulse);
 
@@ -51,15 +52,16 @@ public class PlayerCollisons : MonoBehaviour
 
 			anim.Play ("rabbit_hit");
 			StaticVars.starCount = 0;
+//			isInvincible = true;
 		} else
-			Death ();
+			StaticVars.GameOver ();
 
 	}
 
-	void Death()
-	{
-		StaticVars.gameOver = true;
-		StaticVars.isPaused = true;
-		deathPanel.SetActive (true);
-	}
+//	IEnumerator InvincibleFrames()
+//	{
+//		yield return new WaitForSeconds (invincibleSec);
+//
+//		isInvincible = false;
+//	}
 }

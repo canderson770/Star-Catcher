@@ -6,6 +6,8 @@ public class StarControl : MonoBehaviour
 	Rigidbody starRB;
 	float randomDir;
 
+	public GameObject starSplash;
+
 	public float force = 100;
 	public float lifetime = 3;
 	public float upForce;
@@ -28,9 +30,14 @@ public class StarControl : MonoBehaviour
 
 	void OnCollisionEnter(Collision coll)
 	{
-		if (coll.gameObject.layer == 8) 
+		if (coll.gameObject.layer == 8 /*Ground*/) 
 		{
 			gameObject.layer = 17 /*StarBoundaryOff*/;
+			foreach (ContactPoint contact in coll) 
+			{
+				GameObject temp = Instantiate (starSplash, contact.point + Vector3.up/5, Quaternion.identity) as GameObject;
+				Destroy (temp, 1);
+			}
 		}
 	}
 

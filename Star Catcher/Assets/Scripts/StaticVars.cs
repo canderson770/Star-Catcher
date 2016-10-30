@@ -6,16 +6,25 @@ using System.Collections.Generic;
 public class StaticVars : MonoBehaviour 
 {
 	public static float lastModule = 1;
-	public static int starCount;
-	public static float distance;
+	public static int starCount = 0;
+	public static int starBarCount = 0;
+	public static float distance = 0;
+	public static float time = 0;
 	public static bool isPaused = false;
+	public static bool isGrounded = false;
 	public static bool gameOver = false;
-
 
 	public static void Reset()
 	{
 		starCount = 0;
+		starBarCount = 0;
 		gameOver = false;
 		isPaused = false;
+	}
+
+	public static void GameOver()
+	{
+		StaticVars.gameOver = true;
+		StaticVars.isPaused = true;
 	}
 }

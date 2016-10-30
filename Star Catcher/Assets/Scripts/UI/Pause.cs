@@ -6,6 +6,7 @@ public class Pause : MonoBehaviour
 
 	public GameObject pausedPanel;
 	public GameObject HUD;
+	public GameObject deathPanel;
 
 	void Update ()
 	{
@@ -20,6 +21,11 @@ public class Pause : MonoBehaviour
 			{
 				pausedPanel.SetActive (true);
 				HUD.SetActive (false);
+			} 
+			else 
+			{
+				deathPanel.SetActive (true);
+				HUD.SetActive (false);
 			}
 		}
 		else
@@ -27,7 +33,6 @@ public class Pause : MonoBehaviour
 			Time.timeScale = 1;
 			pausedPanel.SetActive (false);
 			HUD.SetActive (true);
-		}	
+		}
 	}
-
 }
