@@ -11,6 +11,7 @@ public class PlayerCollisons : MonoBehaviour
 	public GameObject wolf;
 
 	public float invincibleSec = 3;
+//	public float downForce = 100;
 
 	void Start()
 	{
@@ -41,17 +42,31 @@ public class PlayerCollisons : MonoBehaviour
 		}
 	}
 
+//	void OnCollisionStay(Collision coll)
+//	{
+//		if (coll.gameObject.layer == 8) 
+//		{
+//			rabbitRB.AddForce (new Vector3 (rabbitRB.velocity.x, downForce, 0), ForceMode.VelocityChange);
+//			print ("hit");
+//		}
+//	}
+
 	void Hit()
 	{
 		if (StaticVars.starCount > 0) {
 			rabbitRB.velocity = new Vector3 (rabbitRB.velocity.x, 0, 0);
 			rabbitRB.AddForce (new Vector3 (Random.Range (-10, 10), 15, 0), ForceMode.Impulse);
 
-			for (int i = 0; i < (StaticVars.starCount /*- StaticVars.starCount/2*/); i++)
+			for (int i = 0; i < (StaticVars.starCount - StaticVars.starCount/2); i++)
 				Instantiate (fakeStar, transform.position, Quaternion.identity);
 
 			anim.Play ("rabbit_hit");
-			StaticVars.starCount = 0;
+
+			if (StaticVars.starCount >= 5)
+				StaticVars.starCount -= 5;
+			else
+				StaticVars.starCount = 0;
+			StaticVars.starBarCount = 0;
 //			isInvincible = true;
 		} else
 			StaticVars.GameOver ();

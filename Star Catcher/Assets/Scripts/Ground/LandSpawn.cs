@@ -16,7 +16,7 @@ public class LandSpawn : MonoBehaviour
 		
 			otherSpawn = new Vector3 (45, 0, 0) + transform.position;
 			Instantiate (landModules [randomNum], otherSpawn, Quaternion.identity);
-			StaticVars.lastModule = randomNum;
+//			StaticVars.lastModule = randomNum;
 		}
 
 	}

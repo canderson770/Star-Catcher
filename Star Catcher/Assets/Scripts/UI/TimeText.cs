@@ -9,9 +9,6 @@ public class TimeText : MonoBehaviour
 	float timeSec;
 	string otherText;
 
-	public Text countdown;
-	public Canvas canvas;
-
 	void Start()
 	{
 		timeText = GetComponent<Text> ();

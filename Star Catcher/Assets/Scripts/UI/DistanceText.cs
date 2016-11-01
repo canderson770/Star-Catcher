@@ -16,8 +16,7 @@ public class DistanceText : MonoBehaviour
 
 	void Update()
 	{
-		distance = cam.transform.position.x / 10;
-		StaticVars.distance = distance;
+		StaticVars.distance = cam.transform.position.x / 10;
 		distanceText.text = "Distance: " + distance.ToString("F0");
 	}
 }

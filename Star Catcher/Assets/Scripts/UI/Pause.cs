@@ -3,14 +3,21 @@ using System.Collections;
 
 public class Pause : MonoBehaviour 
 {
-
 	public GameObject pausedPanel;
 	public GameObject HUD;
 	public GameObject deathPanel;
 
+	Animator anim;
+
+	void Start()
+	{
+		anim = GetComponent<Animator> ();
+	}
+
+
 	void Update ()
 	{
-		if (Input.GetKeyDown (KeyCode.Escape))
+		if (Input.GetKeyDown (KeyCode.Escape) && !StaticVars.gameOver)
 			StaticVars.isPaused = !StaticVars.isPaused;
 
 		if (StaticVars.isPaused) 
@@ -34,5 +41,7 @@ public class Pause : MonoBehaviour
 			pausedPanel.SetActive (false);
 			HUD.SetActive (true);
 		}
+
+		anim.SetBool ("Pause", StaticVars.isPaused);
 	}
 }
