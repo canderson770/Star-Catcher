@@ -30,13 +30,16 @@ public class StarControl : MonoBehaviour
 
 	void OnCollisionEnter(Collision coll)
 	{
-		if (coll.gameObject.layer == 8 /*Ground*/) 
+		if (starSplash != null)
 		{
-			gameObject.layer = 17 /*StarBoundaryOff*/;
-			foreach (ContactPoint contact in coll) 
+			if (coll.gameObject.layer == 8 /*Ground*/) 
 			{
-				GameObject temp = Instantiate (starSplash, contact.point + Vector3.up/5, Quaternion.identity) as GameObject;
-				Destroy (temp, 1);
+				gameObject.layer = 17 /*StarBoundaryOff*/;
+				foreach (ContactPoint contact in coll)
+				{
+					GameObject temp = Instantiate (starSplash, contact.point + Vector3.up / 5, Quaternion.identity) as GameObject;
+					Destroy (temp, 1);
+				}
 			}
 		}
 	}

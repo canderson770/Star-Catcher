@@ -10,6 +10,7 @@ public class StaticVars : MonoBehaviour
 	public static int starBarCount = 0;
 	public static float distance = 0;
 	public static float time = 0;
+	public static int randomNegPos = 0;
 
 	public static bool isPaused = false;
 	public static bool isGrounded = false;

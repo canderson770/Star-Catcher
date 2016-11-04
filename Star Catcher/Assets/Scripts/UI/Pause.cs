@@ -17,7 +17,7 @@ public class Pause : MonoBehaviour
 
 	void Update ()
 	{
-		if (Input.GetKeyDown (KeyCode.Escape) && !StaticVars.gameOver)
+		if (Input.GetButtonDown("Cancel") && !StaticVars.gameOver)
 			StaticVars.isPaused = !StaticVars.isPaused;
 
 		if (StaticVars.isPaused) 

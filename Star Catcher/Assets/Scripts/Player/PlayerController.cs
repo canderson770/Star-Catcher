@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 		
 		Move (Input.GetAxis ("Horizontal"));
 
-		if (Input.GetKeyUp(KeyCode.Space))
+		if (Input.GetButtonDown("Jump"))
 			Jump ();
 	}
 
@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
 			if (!StaticVars.isGrounded && hasDoubleJump)
 				hasDoubleJump = false;
 			
+			upJump ();
 			anim.PlayInFixedTime ("rabbit_jumpSquat");
 		}
 	}
