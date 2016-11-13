@@ -21,15 +21,19 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		anim.SetBool ("isGrounded", StaticVars.isGrounded);;
+		if (!StaticVars.isPaused)
+		{
+			anim.SetBool ("isGrounded", StaticVars.isGrounded);
+			;
 
-		if (StaticVars.isGrounded)
-			hasDoubleJump = true;
+			if (StaticVars.isGrounded)
+				hasDoubleJump = true;
 		
-		Move (Input.GetAxis ("Horizontal"));
+			Move (Input.GetAxis ("Horizontal"));
 
-		if (Input.GetButtonDown("Jump"))
-			Jump ();
+			if (Input.GetButtonDown ("Jump"))
+				Jump ();
+		}
 	}
 
 	void Move(float _moveInput)

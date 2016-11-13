@@ -11,6 +11,14 @@ public class UIScript : MonoBehaviour
 		StaticVars.time = levelTime;	
 	}
 
+	public void FirstButton()
+	{
+		if(StaticVars.gameOver == true)
+			Restart();
+		else
+			Pause();
+	}
+
 	public void Pause()
 	{
 		StaticVars.isPaused = !StaticVars.isPaused;

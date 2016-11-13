@@ -1,21 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PlayerCollisons.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UI\Pause.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player\PlayerCollisons.cs" Line="36" Column="4" />
-      <File FileName="Assets\Scripts\Player\PlayerController.cs" Line="43" Column="53" />
-      <File FileName="Assets\Scripts\StaticVars.cs" Line="13" Column="37" />
-      <File FileName="Assets\Scripts\WolfControl.cs" Line="14" Column="35" />
-      <File FileName="Assets\Scripts\Player\StarCatch.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CameraMove.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Star\StarControl.cs" Line="41" Column="1" />
+      <File FileName="Assets\Scripts\Player\PlayerCollisons.cs" Line="105" Column="3" />
+      <File FileName="Assets\Scripts\Player\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\StaticVars.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\WolfControl.cs" Line="19" Column="22" />
+      <File FileName="Assets\Scripts\Star\StarControl.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\UI\DistanceText.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UI\Pause.cs" Line="20" Column="26" />
-      <File FileName="Assets\Scripts\UI\UIScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UI\TimeText.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UI\UIBar.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UI\ScoreText.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Ground\GroundChecker.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UI\Pause.cs" Line="54" Column="38" />
+      <File FileName="Assets\Scripts\UI\UIScript.cs" Line="11" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

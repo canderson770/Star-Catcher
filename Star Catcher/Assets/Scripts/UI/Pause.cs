@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public class Pause : MonoBehaviour 
 {
+	EventSystem myEventSystem;
+
 	public GameObject pausedPanel;
 	public GameObject HUD;
-	public GameObject deathPanel;
+	public GameObject firstButton;
 
 	Animator anim;
 
 	void Start()
 	{
 		anim = GetComponent<Animator> ();
+//		StartCoroutine (HighlightButton ());
 	}
 
 
@@ -23,6 +27,7 @@ public class Pause : MonoBehaviour
 		if (StaticVars.isPaused) 
 		{
 			Time.timeScale = 0;
+			Cursor.visible = true;
 
 			if (!StaticVars.gameOver) 
 			{
@@ -31,7 +36,7 @@ public class Pause : MonoBehaviour
 			} 
 			else 
 			{
-				deathPanel.SetActive (true);
+				pausedPanel.SetActive (true);
 				HUD.SetActive (false);
 			}
 		}
@@ -40,8 +45,16 @@ public class Pause : MonoBehaviour
 			Time.timeScale = 1;
 			pausedPanel.SetActive (false);
 			HUD.SetActive (true);
+			Cursor.visible = false;
 		}
 
 		anim.SetBool ("Pause", StaticVars.isPaused);
 	}
+
+//	IEnumerator HighlightButton()
+//	{
+//		myEventSystem.SetSelectedGameObject (null);
+//		yield return new WaitForEndOfFrame();
+//		myEventSystem.SetSelectedGameObject(firstButton);
+//	}
 }

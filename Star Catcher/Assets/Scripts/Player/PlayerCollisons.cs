@@ -6,14 +6,17 @@ public class PlayerCollisons : MonoBehaviour
 	Rigidbody rabbitRB;
 	Animator anim;
 	bool isInvincible;
+	int wolfDistance = 60;
 
 	public GameObject fakeStar;
 	public GameObject wolf;
+	public GameObject secondsText;
 
 	public float invincibleSec = 3;
 	public int loseStars = 5;
+	public int secondsToLose = 10;
+
 	int loseStarAmount;
-//	public float downForce = 100;
 
 	void Start()
 	{
@@ -29,8 +32,14 @@ public class PlayerCollisons : MonoBehaviour
 				Hit ();
 			else if (coll.gameObject.layer == 19 /*Wolf Trigger*/)
 			{
-				StaticVars.randomNegPos = Random.Range (0, 1) * 2 - 1; 
-				Instantiate (wolf, coll.transform.parent.transform.position + new Vector3 (60 * StaticVars.randomNegPos, 5.4f, 0), wolf.transform.rotation);
+				StaticVars.randomNegPos = (Random.Range (0, 2) * 2) - 1;
+
+				if (StaticVars.randomNegPos == -1)
+					wolfDistance = 30;
+				else
+					wolfDistance = 50;
+				
+				Instantiate (wolf, coll.transform.parent.transform.position + new Vector3 (wolfDistance * StaticVars.randomNegPos, 5.4f, 0), wolf.transform.rotation);
 				Destroy (coll.gameObject);
 			}
 		}
@@ -62,33 +71,40 @@ public class PlayerCollisons : MonoBehaviour
 
 	void Hit()
 	{
-		if (StaticVars.starCount > 0) 
-		{
+//		if (StaticVars.starCount > 0) 
+//		{
 			rabbitRB.velocity = new Vector3 (rabbitRB.velocity.x, 0, 0);
 			rabbitRB.AddForce (new Vector3 (0, 25, 0), ForceMode.Impulse);
 
-			if (StaticVars.starCount >= loseStars)
-				loseStarAmount = loseStars;
-			else
-				loseStarAmount = StaticVars.starCount;
-			
-			for (int i = 0; i < loseStarAmount; i++)
-				Instantiate (fakeStar, transform.position, Quaternion.identity);
-
 			anim.PlayInFixedTime("rabbit_hit");
 
-			if (StaticVars.starCount >= loseStars)
-				StaticVars.starCount -= loseStars;
+//			if (StaticVars.starCount >= loseStars)
+//				loseStarAmount = loseStars;
+//			else
+//				loseStarAmount = StaticVars.starCount;
+//			
+//			for (int i = 0; i < loseStarAmount; i++)
+//				Instantiate (fakeStar, transform.position, Quaternion.identity);
+//
+//			if (StaticVars.starCount >= loseStars)
+//				StaticVars.starCount -= loseStars;
+//			else
+//				StaticVars.starCount = 0;
+
+			if (StaticVars.time >= secondsToLose)
+				StaticVars.time-= secondsToLose;
 			else
-				StaticVars.starCount = 0;
-			
+				StaticVars.time = 0;
+
+			Instantiate(secondsText, rabbitRB.transform.position, Quaternion.identity);
+
 			StaticVars.starBarCount = 0;
 			isInvincible = true;
 			anim.SetBool ("isInvincible", isInvincible);
 			StartCoroutine (InvincibleFrames ());
-		} 
-		else
-			StaticVars.GameOver ();
+//		} 
+//		else
+//			StaticVars.GameOver ();
 
 	}
 
