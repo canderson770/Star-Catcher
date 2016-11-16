@@ -11,12 +11,16 @@ public class PlayerController : MonoBehaviour
 	Rigidbody character;
 	SpriteRenderer rabbitSprite;
 	Animator anim;
+	AudioSource audio;
 
 	void Start()
 	{
 		character = GetComponent<Rigidbody> ();
 		rabbitSprite = GetComponent<SpriteRenderer> ();
 		anim = GetComponent<Animator> ();
+		audio = GetComponent<AudioSource> ();
+
+		StaticVars.speed = speed;
 	}
 
 	void Update()
@@ -38,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
 	void Move(float _moveInput)
 	{
- 		character.velocity = new Vector3(_moveInput * speed, character.velocity.y, 0);
+ 		character.velocity = new Vector3(_moveInput * StaticVars.speed, character.velocity.y, 0);
 
 		anim.SetFloat ("Speed", Mathf.Abs(_moveInput));
 
@@ -46,14 +50,20 @@ public class PlayerController : MonoBehaviour
 		{
 			transform.rotation = Quaternion.Euler(0, 180, 0);
 		}
-		if (_moveInput > 0)
+		else if (_moveInput > 0)
 		{
 			transform.rotation = Quaternion.Euler(0, 0, 0);
 		}
-	}
+
+//		if (Mathf.Abs (_moveInput) > .1f && StaticVars.isGrounded)
+//			audio.Play ();
+//		else
+//			audio.Stop();
+}
 
 	void Jump()
 	{
+		StaticVars.speed = speed;
 		if (StaticVars.isGrounded || hasDoubleJump) 
 		{
 			if (!StaticVars.isGrounded && hasDoubleJump)

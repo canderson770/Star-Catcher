@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Prototype 12.unity
+- path: Assets/Scenes/Prototype 12 TEST VISUALS.unity
   isLoaded: 1
   isActive: 1

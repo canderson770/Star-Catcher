@@ -11,12 +11,15 @@ public class PlayerCollisons : MonoBehaviour
 	public GameObject fakeStar;
 	public GameObject wolf;
 	public GameObject secondsText;
+	public AudioClip bark;
 
 	public float invincibleSec = 3;
-	public int loseStars = 5;
+//	public int loseStars = 5;
 	public int secondsToLose = 10;
+	public float slowDown = 2;
 
 	int loseStarAmount;
+	float savedSpeed;
 
 	void Start()
 	{
@@ -41,11 +44,31 @@ public class PlayerCollisons : MonoBehaviour
 				
 				Instantiate (wolf, coll.transform.parent.transform.position + new Vector3 (wolfDistance * StaticVars.randomNegPos, 5.4f, 0), wolf.transform.rotation);
 				Destroy (coll.gameObject);
+				AudioSource.PlayClipAtPoint(bark, new Vector3 (wolfDistance * StaticVars.randomNegPos, 5.4f, 0), 1);
 			}
 		}
 		if (coll.gameObject.layer == 11 /*DeathZone*/)
 			StaticVars.GameOver ();
+
+
+		if (coll.gameObject.layer == 24 /*Sagebrush*/)
+		{
+			savedSpeed = StaticVars.speed;
+			StaticVars.speed = StaticVars.speed / slowDown;
+			print (StaticVars.speed);
+			print ("sage");
+		}
 	}	
+
+	void OnTriggerExit(Collider coll)
+	{
+		if (coll.gameObject.layer == 24 /*Sagebrush*/)
+		{
+			StaticVars.speed = savedSpeed;
+			print (StaticVars.speed);
+			print ("sage");
+		}
+	}
 
 	void OnCollisionEnter(Collision coll)
 	{

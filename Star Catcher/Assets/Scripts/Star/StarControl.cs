@@ -5,6 +5,9 @@ public class StarControl : MonoBehaviour
 {
 	Rigidbody starRB;
 	float randomDir;
+	AudioSource audio;
+
+	public AudioClip clip;
 
 	public GameObject starSplash;
 
@@ -16,6 +19,7 @@ public class StarControl : MonoBehaviour
 	void Start()
 	{
 		starRB = GetComponent<Rigidbody> ();
+		audio = GetComponent<AudioSource> ();
 
 		randomDir = Random.value;
 		if (randomDir > .5f)
@@ -40,6 +44,10 @@ public class StarControl : MonoBehaviour
 					GameObject temp = Instantiate (starSplash, contact.point + Vector3.up / 5, Quaternion.identity) as GameObject;
 					Destroy (temp, 1);
 				}
+
+				print (Mathf.Abs(starRB.velocity.y / 3));
+				audio.volume = Mathf.Abs(starRB.velocity.y);
+				AudioSource.PlayClipAtPoint(audio.clip, transform.position, audio.volume);
 			}
 		}
 	}
