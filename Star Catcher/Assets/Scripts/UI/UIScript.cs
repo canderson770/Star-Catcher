@@ -27,12 +27,12 @@ public class UIScript : MonoBehaviour
 	public void Restart()
 	{
 		StaticVars.Reset ();
-		SceneManager.LoadScene (1);
+		SceneManager.LoadScene (2);
 	}
 
 	public void MainMenu()
 	{
-		SceneManager.LoadScene (0);
+		SceneManager.LoadScene (1);
 		StaticVars.isPaused = false;
 	}
 

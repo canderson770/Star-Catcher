@@ -45,15 +45,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ChangeButtonText.cs" />
-     <Compile Include="Assets\FinalScoreText.cs" />
-     <Compile Include="Assets\FootstepParticles.cs" />
-     <Compile Include="Assets\Scripts\BGScroll.cs" />
-     <Compile Include="Assets\Scripts\CameraMove.cs" />
-     <Compile Include="Assets\Scripts\Ground\DetailSpawner.cs" />
-     <Compile Include="Assets\Scripts\Ground\GroundChecker.cs" />
-     <Compile Include="Assets\Scripts\Ground\GroundDestroy.cs" />
-     <Compile Include="Assets\Scripts\Ground\LandSpawn.cs" />
+     <Compile Include="Assets\Scripts\Background\BGScroll.cs" />
+     <Compile Include="Assets\Scripts\Background\CameraMove.cs" />
+     <Compile Include="Assets\Scripts\Background\DetailSpawner.cs" />
+     <Compile Include="Assets\Scripts\Background\GroundChecker.cs" />
+     <Compile Include="Assets\Scripts\Background\GroundDestroy.cs" />
+     <Compile Include="Assets\Scripts\Background\LandSpawn.cs" />
+     <Compile Include="Assets\Scripts\DetailListScript.cs" />
+     <Compile Include="Assets\Scripts\Other\MusicControl.cs" />
+     <Compile Include="Assets\Scripts\Other\MuteAllSounds.cs" />
+     <Compile Include="Assets\Scripts\Other\WaitForDestroy.cs" />
+     <Compile Include="Assets\Scripts\Player\FootstepParticles.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerCollisons.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\StarCatch.cs" />
@@ -61,15 +63,17 @@
      <Compile Include="Assets\Scripts\Star\StarControl.cs" />
      <Compile Include="Assets\Scripts\Star\StarSpawner.cs" />
      <Compile Include="Assets\Scripts\StaticVars.cs" />
+     <Compile Include="Assets\Scripts\UI\ChangeButtonText.cs" />
      <Compile Include="Assets\Scripts\UI\CountdownText.cs" />
-     <Compile Include="Assets\Scripts\UI\DistanceText.cs" />
+     <Compile Include="Assets\Scripts\UI\FinalScoreText.cs" />
+     <Compile Include="Assets\Scripts\UI\HideCursor.cs" />
      <Compile Include="Assets\Scripts\UI\Pause.cs" />
      <Compile Include="Assets\Scripts\UI\ScoreText.cs" />
+     <Compile Include="Assets\Scripts\UI\SetFirstBtn.cs" />
      <Compile Include="Assets\Scripts\UI\StarsText.cs" />
      <Compile Include="Assets\Scripts\UI\TimeText.cs" />
      <Compile Include="Assets\Scripts\UI\UIBar.cs" />
      <Compile Include="Assets\Scripts\UI\UIScript.cs" />
-     <Compile Include="Assets\Scripts\WaitForDestroy.cs" />
      <Compile Include="Assets\Scripts\WolfControl.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

@@ -13,9 +13,10 @@ public class UIBar : MonoBehaviour
 	void Start () 
 	{
 		rectT = GetComponent<RectTransform> ();
+		rectT.sizeDelta = new Vector2 (0, 6.5f);
 	}
 	
-	void Update () 
+	public void UpdateBar () 
 	{
 		rectT.sizeDelta = new Vector2 (StaticVars.starBarCount * 20, 6.5f);
 
@@ -23,6 +24,7 @@ public class UIBar : MonoBehaviour
 		{
 			StaticVars.time += StaticVars.secondsToAdd;
 			StaticVars.starBarCount = 0;
+			rectT.sizeDelta = new Vector2 (0, 6.5f);
 
 			Instantiate(secondsText, rabbit.transform.position, Quaternion.identity);
 		}

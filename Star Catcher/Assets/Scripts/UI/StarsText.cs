@@ -11,8 +11,8 @@ public class StarsText : MonoBehaviour
 		starText = GetComponent<Text> ();
 	}
 
-	void Update()
+	public void UpdateStars()
 	{
-		starText.text = "Stars: " + StaticVars.starCount.ToString ();
+		starText.text = StaticVars.starCount.ToString ();
 	}
 }

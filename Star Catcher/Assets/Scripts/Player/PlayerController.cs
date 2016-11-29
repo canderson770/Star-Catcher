@@ -5,17 +5,18 @@ public class PlayerController : MonoBehaviour
 {
 	public float speed = 5;
 	public float jumpSpeed = 400;
+	public float gravity = 10;
 	bool hasDoubleJump = false;
-	public LayerMask ground;
+	bool canMove = true;
 
-	Rigidbody character;
+	Rigidbody rabbitRB;
 	SpriteRenderer rabbitSprite;
 	Animator anim;
 	AudioSource audio;
 
 	void Start()
 	{
-		character = GetComponent<Rigidbody> ();
+		rabbitRB = GetComponent<Rigidbody> ();
 		rabbitSprite = GetComponent<SpriteRenderer> ();
 		anim = GetComponent<Animator> ();
 		audio = GetComponent<AudioSource> ();
@@ -28,7 +29,6 @@ public class PlayerController : MonoBehaviour
 		if (!StaticVars.isPaused)
 		{
 			anim.SetBool ("isGrounded", StaticVars.isGrounded);
-			;
 
 			if (StaticVars.isGrounded)
 				hasDoubleJump = true;
@@ -37,29 +37,55 @@ public class PlayerController : MonoBehaviour
 
 			if (Input.GetButtonDown ("Jump"))
 				Jump ();
+
+			Gravity ();
 		}
+
+
+		if (StaticVars.isPaused)
+			audio.Pause();
+		else
+			audio.UnPause();
+	}
+
+	void OnCollisionStay(Collision coll)
+	{
+		if (coll.gameObject.layer == LayerMask.NameToLayer ("WallCollider")) 
+		{
+			canMove = false;
+		}
+	}
+
+	void OnCollisionExit(Collision coll)
+	{
+		if(coll.gameObject.layer == LayerMask.NameToLayer("WallCollider"))
+			canMove = true;
 	}
 
 	void Move(float _moveInput)
 	{
- 		character.velocity = new Vector3(_moveInput * StaticVars.speed, character.velocity.y, 0);
-
-		anim.SetFloat ("Speed", Mathf.Abs(_moveInput));
-
-		if (_moveInput < 0) 
+		if (canMove) 
 		{
-			transform.rotation = Quaternion.Euler(0, 180, 0);
-		}
-		else if (_moveInput > 0)
-		{
-			transform.rotation = Quaternion.Euler(0, 0, 0);
-		}
+			rabbitRB.velocity = new Vector3 (_moveInput * StaticVars.speed, rabbitRB.velocity.y, 0);
 
-//		if (Mathf.Abs (_moveInput) > .1f && StaticVars.isGrounded)
-//			audio.Play ();
-//		else
-//			audio.Stop();
+			anim.SetFloat ("Speed", Mathf.Abs (_moveInput));
+
+			if (_moveInput < 0) 
+			{
+				transform.rotation = Quaternion.Euler (0, 180, 0);
+			} 
+			else if (_moveInput > 0)
+			{
+				transform.rotation = Quaternion.Euler (0, 0, 0);
+			}
+		}
 }
+
+	void Gravity()
+	{
+		if (rabbitRB.velocity.y < .1)
+			rabbitRB.AddForce (Vector3.down * gravity, ForceMode.Acceleration);
+	}
 
 	void Jump()
 	{
@@ -76,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
 	public void upJump()
 	{
-		character.velocity = new Vector3 (character.velocity.x, 0, 0);
-		character.AddForce (Vector3.up * jumpSpeed, ForceMode.VelocityChange);
+		rabbitRB.velocity = new Vector3 (rabbitRB.velocity.x, 0, 0);
+		rabbitRB.AddForce (Vector3.up * jumpSpeed, ForceMode.VelocityChange);
 	}
 }

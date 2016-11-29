@@ -4,18 +4,25 @@ using System.Collections;
 
 public class Pause : MonoBehaviour 
 {
-	EventSystem myEventSystem;
+	public EventSystem myEventSystem;
 
 	public GameObject pausedPanel;
 	public GameObject HUD;
-	public GameObject firstButton;
+
+	ChangeButtonText changeBtn;
+	FinalScoreText finalScore;
 
 	Animator anim;
 
 	void Start()
 	{
 		anim = GetComponent<Animator> ();
-//		StartCoroutine (HighlightButton ());
+
+		GameObject resumeBtn = GameObject.Find ("Resume");
+		changeBtn = resumeBtn.GetComponent<ChangeButtonText> ();
+
+		GameObject finalScoreText = GameObject.Find ("PauseScore");
+		finalScore = finalScoreText.GetComponent<FinalScoreText> ();
 	}
 
 
@@ -24,37 +31,23 @@ public class Pause : MonoBehaviour
 		if (Input.GetButtonDown("Cancel") && !StaticVars.gameOver)
 			StaticVars.isPaused = !StaticVars.isPaused;
 
+		changeBtn.ChangeText ();
+
 		if (StaticVars.isPaused) 
 		{
 			Time.timeScale = 0;
-			Cursor.visible = true;
-
-			if (!StaticVars.gameOver) 
-			{
-				pausedPanel.SetActive (true);
-				HUD.SetActive (false);
-			} 
-			else 
-			{
-				pausedPanel.SetActive (true);
-				HUD.SetActive (false);
-			}
+			pausedPanel.SetActive (true);
+			HUD.SetActive (false);
+			finalScore.UpdateScore ();
 		}
 		else
 		{
 			Time.timeScale = 1;
 			pausedPanel.SetActive (false);
 			HUD.SetActive (true);
-			Cursor.visible = false;
+			myEventSystem.SetSelectedGameObject(null);
 		}
 
 		anim.SetBool ("Pause", StaticVars.isPaused);
 	}
-
-//	IEnumerator HighlightButton()
-//	{
-//		myEventSystem.SetSelectedGameObject (null);
-//		yield return new WaitForEndOfFrame();
-//		myEventSystem.SetSelectedGameObject(firstButton);
-//	}
 }

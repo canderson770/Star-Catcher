@@ -13,13 +13,15 @@ public class CountdownText : MonoBehaviour
 
 	void Update()
 	{
-		if (Mathf.Floor (StaticVars.time) == 3) 
+		if (Mathf.Floor (StaticVars.time) == 3)
 			timeText.text = "3";
-		else if (Mathf.Floor (StaticVars.time) == 2) 
+		else if (Mathf.Floor (StaticVars.time) == 2)
 			timeText.text = "2";
-		else if (Mathf.Floor (StaticVars.time) == 1) 
+		else if (Mathf.Floor (StaticVars.time) == 1)
 			timeText.text = "1";
-		else
+		else if (Mathf.Floor (StaticVars.time) == 1)
+			timeText.text = "GAME OVER";
+		else 
 			timeText.text = "";
 	}
 }

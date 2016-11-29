@@ -5,9 +5,8 @@ using System.Collections;
 public class ScoreText : MonoBehaviour 
 {
 	Text scoreText;
-	float distance;
+	float time;
 
-	public GameObject cam;
 
 	void Start()
 	{
@@ -16,8 +15,8 @@ public class ScoreText : MonoBehaviour
 
 	void Update()
 	{
-		distance = cam.transform.position.x / 10;
-		StaticVars.score = (int)distance + StaticVars.starCount * 50;
-		scoreText.text = "Score: " + StaticVars.score.ToString().PadLeft(6, '0');
+		time = Time.timeSinceLevelLoad;
+		StaticVars.score = (int)time + StaticVars.starCount * 50;
+		scoreText.text = StaticVars.score.ToString().PadLeft(6, '0');
 	}
 }

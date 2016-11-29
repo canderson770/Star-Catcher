@@ -45,7 +45,6 @@ public class StarControl : MonoBehaviour
 					Destroy (temp, 1);
 				}
 
-				print (Mathf.Abs(starRB.velocity.y / 3));
 				audio.volume = Mathf.Abs(starRB.velocity.y);
 				AudioSource.PlayClipAtPoint(audio.clip, transform.position, audio.volume);
 			}
