@@ -3,23 +3,32 @@ using System.Collections;
 
 public class StarControl : MonoBehaviour 
 {
-	Rigidbody starRB;
+	//Private Variables
+	float dynamicVolume;
 	float randomDir;
+	Rigidbody starRB;
 	AudioSource audio;
+	Transform parent;
+	Transform audioParent;
 
+	//Prefabs
+	public GameObject starSplash;
 	public AudioClip clip;
 
-	public GameObject starSplash;
+	public float volume = 80;
 
+	[Tooltip("Horizontal Force when the star spawns")]
 	public float force = 100;
+
+	[Tooltip("Amount of time before the star is destroyed")]
 	public float lifetime = 3;
-	public float upForce;
-	public float zforce;
 
 	void Start()
 	{
 		starRB = GetComponent<Rigidbody> ();
 		audio = GetComponent<AudioSource> ();
+		parent = GameObject.Find ("Stars and VFX").transform;
+		audioParent = GameObject.Find ("Audio").transform;
 
 		randomDir = Random.value;
 		if (randomDir > .5f)
@@ -27,7 +36,7 @@ public class StarControl : MonoBehaviour
 		else
 			randomDir = -1;
 		
-		starRB.AddForce (new Vector3(Random.Range(force/2, force) * randomDir, upForce, zforce), ForceMode.VelocityChange);
+		starRB.AddForce (new Vector3(Random.Range(force/2, force) * randomDir, 0, 0), ForceMode.VelocityChange);
 
 		Destroy (gameObject, lifetime);
 	}
@@ -42,11 +51,13 @@ public class StarControl : MonoBehaviour
 				foreach (ContactPoint contact in coll)
 				{
 					GameObject temp = Instantiate (starSplash, contact.point + Vector3.up / 5, Quaternion.identity) as GameObject;
+					temp.transform.SetParent (parent);
 					Destroy (temp, 1);
 				}
 
-				audio.volume = Mathf.Abs(starRB.velocity.y);
-				AudioSource.PlayClipAtPoint(audio.clip, transform.position, audio.volume);
+				dynamicVolume = Mathf.Abs(starRB.velocity.y/volume);
+
+				MyPlayClipAtPoint._PlayClipAtPoint(clip, transform, dynamicVolume, audioParent);
 			}
 		}
 	}

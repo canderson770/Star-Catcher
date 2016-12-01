@@ -16,7 +16,7 @@ public class ScoreText : MonoBehaviour
 	void Update()
 	{
 		time = Time.timeSinceLevelLoad;
-		StaticVars.score = (int)time + StaticVars.starCount * 50;
+		StaticVars.score = (int)time + StaticVars.starCount * 10;
 		scoreText.text = StaticVars.score.ToString().PadLeft(6, '0');
 	}
 }

@@ -3,16 +3,19 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-	public float speed = 5;
-	public float jumpSpeed = 400;
-	public float gravity = 10;
-	bool hasDoubleJump = false;
-	bool canMove = true;
-
+	//Private Variables
 	Rigidbody rabbitRB;
 	SpriteRenderer rabbitSprite;
 	Animator anim;
 	AudioSource audio;
+	bool hasDoubleJump = false;
+	bool canMove = true;
+
+	//Public Variables
+	public float speed = 5;
+	public float jumpSpeed = 400;
+	public float gravity = 10;
+
 
 	void Start()
 	{

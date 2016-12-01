@@ -3,7 +3,9 @@ using System.Collections;
 
 public class CameraMove : MonoBehaviour 
 {	
+	[Range(0,0.3f)]
 	public float cameraSpeed = .15f;
+
 	Rigidbody camRB;
 
 	void Start()

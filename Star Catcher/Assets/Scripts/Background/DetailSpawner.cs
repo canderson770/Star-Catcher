@@ -9,7 +9,7 @@ public class DetailSpawner : MonoBehaviour
 
 	void Start () 
 	{
-		GameObject detailScriptGameObject = GameObject.Find ("DetailList");
+		GameObject detailScriptGameObject = GameObject.Find ("Lists");
 		detailScript = detailScriptGameObject.GetComponent<DetailListScript> ();
 
 //		for(int i = 0; i > transform.childCount; i++)
@@ -29,11 +29,14 @@ public class DetailSpawner : MonoBehaviour
 			bool onOff = (Random.value > detailScript.chanceToSpawn/100);
 			if (onOff)
 			{
+				GameObject go;
 				int randomNum = Random.Range (0, detailScript.details.Count);
 				if (detailScript.details[randomNum].layer == LayerMask.NameToLayer("Non Interactables"))
-					Instantiate (detailScript.details[randomNum], sp.transform.position, Quaternion.identity);
+					go = Instantiate (detailScript.details[randomNum], sp.transform.position, Quaternion.identity) as GameObject;
 				else
-					Instantiate (detailScript.details[randomNum], sp.transform.position, sp.transform.rotation);
+					go = Instantiate (detailScript.details[randomNum], sp.transform.position, sp.transform.rotation) as GameObject;
+
+				go.transform.SetParent (transform);
 			}
 		}
 	}

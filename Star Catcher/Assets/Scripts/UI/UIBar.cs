@@ -7,12 +7,13 @@ public class UIBar : MonoBehaviour
 	RectTransform rectT;
 	public int amountOfStarsNeeded = 10;
 
-	public GameObject rabbit;
+	GameObject rabbit;
 	public GameObject secondsText;
 
 	void Start () 
 	{
 		rectT = GetComponent<RectTransform> ();
+		rabbit = GameObject.Find ("Rabbit");
 		rectT.sizeDelta = new Vector2 (0, 6.5f);
 	}
 	

@@ -3,13 +3,17 @@ using System.Collections;
 
 public class FootstepParticles : MonoBehaviour
 {
-	public GameObject footSplash;
-
+	//Private Variables
+	Transform parent;
 	Transform particleTransform;
+
+	//Prefabs
+	public GameObject footSplash;
 
 	void Start()
 	{
 		particleTransform = transform.Find ("particlesSpawnPoint");
+		parent = GameObject.Find ("Stars and VFX").transform;
 	}
 
 	public void SpawnParticles()
@@ -17,6 +21,7 @@ public class FootstepParticles : MonoBehaviour
 		if (StaticVars.isGrounded) 
 		{
 			GameObject temp = Instantiate (footSplash, particleTransform.position, Quaternion.identity) as GameObject;
+			temp.transform.SetParent (parent);
 			Destroy (temp, 1);
 		}
 	}

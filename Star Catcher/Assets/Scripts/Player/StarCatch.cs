@@ -3,9 +3,12 @@ using System.Collections;
 
 public class StarCatch : MonoBehaviour 
 {
-	public AudioClip star;
+	//Private Variables
 	StarsText starsText;
 	UIBar uiBar;
+
+	//Public Variable
+	public AudioClip clip;
 
 	void Start()
 	{
@@ -23,7 +26,7 @@ public class StarCatch : MonoBehaviour
 			Destroy (coll.gameObject.transform.parent.gameObject);
 			StaticVars.starCount++; 
 			StaticVars.starBarCount++;
-			AudioSource.PlayClipAtPoint (star, transform.position, 1);
+			AudioSource.PlayClipAtPoint (clip, coll.transform.position);
 			starsText.UpdateStars ();
 			uiBar.UpdateBar ();
 		}	

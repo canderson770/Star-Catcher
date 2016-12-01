@@ -1,28 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+
+[Serializable]
+public class PlayerCollisionsPrefabs
+{
+	public GameObject wolf;
+	public GameObject loseSeconds;
+}
 
 public class PlayerCollisons : MonoBehaviour 
 {
+	public PlayerCollisionsPrefabs Prefabs;
+
+	//Private Variables
 	Rigidbody rabbitRB;
 	Animator anim;
+	UIBar uiBar;
 	bool isInvincible;
 	int wolfDistance = 60;
 	int loseStarAmount;
 	float savedSpeed;
 
-	UIBar uiBar;
-
-	public GameObject wolf;
-	public GameObject secondsText;
-
-	public float invincibleSec = 3;
+	//Public Variables
+	public float invinciblitySeconds = 3;
 	public int secondsToLose = 10;
-	public float slowDown = 2;
 
 	void Start()
 	{
 		rabbitRB = GetComponent<Rigidbody> ();
 		anim = GetComponent<Animator> ();
+
+		if (Prefabs.wolf == null)
+			print ("PlayerCollisions: No wolf prefab");
+		if(Prefabs.loseSeconds == null)
+			print("PlayerCollisions: No loseSeconds prefab");
 
 		GameObject uiBarGameObject = GameObject.Find ("Full Bar");
 		uiBar = uiBarGameObject.GetComponent<UIBar> ();
@@ -36,37 +48,23 @@ public class PlayerCollisons : MonoBehaviour
 				Hit ();
 			else if (coll.gameObject.layer == LayerMask.NameToLayer("WolfSpawnTrigger"))
 			{
-				StaticVars.randomNegPos = (Random.Range (0, 2) * 2) - 1;
+				StaticVars.randomNegPos = (UnityEngine.Random.Range (0, 2) * 2) - 1;
 
 				if (StaticVars.randomNegPos == -1)
 					wolfDistance = 30;
 				else
 					wolfDistance = 50;
 				
-				Instantiate (wolf, coll.transform.parent.transform.position + new Vector3 (wolfDistance * StaticVars.randomNegPos, 5.4f, 0), wolf.transform.rotation);
+				Instantiate (Prefabs.wolf, coll.transform.parent.transform.position + new Vector3 (wolfDistance * StaticVars.randomNegPos, 5.4f, 0),
+					Prefabs.wolf.transform.rotation);
 				Destroy (coll.gameObject);
 			}
 		}
 
 		if (coll.gameObject.layer == LayerMask.NameToLayer("DeathZone"))
 			StaticVars.GameOver ();
-
-
-//		if (coll.gameObject.layer == 24 /*Sagebrush*/)
-//		{
-//			savedSpeed = StaticVars.speed;
-//			StaticVars.speed = StaticVars.speed / slowDown;
-//		}
 	}	
-
-//	void OnTriggerExit(Collider coll)
-//	{
-//		if (coll.gameObject.layer == 24 /*Sagebrush*/)
-//		{
-//			StaticVars.speed = savedSpeed;
-//		}
-//	}
-
+		
 	void OnCollisionStay(Collision coll)
 	{
 		if (!isInvincible)
@@ -89,8 +87,8 @@ public class PlayerCollisons : MonoBehaviour
 			StaticVars.time-= secondsToLose;
 		else
 			StaticVars.time = 0;
-
-		Instantiate(secondsText, rabbitRB.transform.position, Quaternion.identity);
+		
+		Instantiate(Prefabs.loseSeconds, rabbitRB.transform.position, Quaternion.identity);
 
 		StaticVars.starBarCount = 0;
 		uiBar.UpdateBar ();
@@ -103,7 +101,7 @@ public class PlayerCollisons : MonoBehaviour
 
 	IEnumerator InvincibleFrames()
 	{
-		yield return new WaitForSeconds (invincibleSec);
+		yield return new WaitForSeconds (invinciblitySeconds);
 
 		isInvincible = false;
 		anim.SetBool ("isInvincible", isInvincible);

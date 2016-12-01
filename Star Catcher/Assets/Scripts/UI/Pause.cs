@@ -11,12 +11,15 @@ public class Pause : MonoBehaviour
 
 	ChangeButtonText changeBtn;
 	FinalScoreText finalScore;
-
 	Animator anim;
+
+	GameObject seletedObj;
+	GameObject resumeButton;
 
 	void Start()
 	{
 		anim = GetComponent<Animator> ();
+		resumeButton = GameObject.Find ("ResumeButton");
 
 		GameObject resumeBtn = GameObject.Find ("Resume");
 		changeBtn = resumeBtn.GetComponent<ChangeButtonText> ();
@@ -39,6 +42,10 @@ public class Pause : MonoBehaviour
 			pausedPanel.SetActive (true);
 			HUD.SetActive (false);
 			finalScore.UpdateScore ();
+			if (myEventSystem.currentSelectedGameObject == null)
+				myEventSystem.SetSelectedGameObject (seletedObj);
+
+			seletedObj = myEventSystem.currentSelectedGameObject;
 		}
 		else
 		{
