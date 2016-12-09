@@ -3,7 +3,11 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+	//Prefabs
+	public GameObject jumpFX;
+
 	//Private Variables
+	Transform parent;
 	Rigidbody rabbitRB;
 	SpriteRenderer rabbitSprite;
 	Animator anim;
@@ -23,6 +27,12 @@ public class PlayerController : MonoBehaviour
 		rabbitSprite = GetComponent<SpriteRenderer> ();
 		anim = GetComponent<Animator> ();
 		audio = GetComponent<AudioSource> ();
+		parent = GameObject.Find ("Stars and VFX").transform;
+
+		if (StaticVars.currentDifficulty == StaticVars.Difficulty.Unfair)
+		{
+			speed = 27;
+		}
 
 		StaticVars.speed = speed;
 	}
@@ -98,8 +108,14 @@ public class PlayerController : MonoBehaviour
 			if (!StaticVars.isGrounded && hasDoubleJump)
 				hasDoubleJump = false;
 			
+			GameObject temp = Instantiate(jumpFX, transform.position + Vector3.down, jumpFX.transform.rotation) as GameObject;
+			temp.transform.SetParent (parent);
+			Destroy (temp, .5f);
+
 			upJump ();
 			anim.PlayInFixedTime ("rabbit_jumpSquat");
+
+		
 		}
 	}
 

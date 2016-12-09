@@ -7,6 +7,9 @@ public class DetailSpawner : MonoBehaviour
 	public List<GameObject> spawnpoints;
 	DetailListScript detailScript;
 
+	float chance;
+
+
 	void Start () 
 	{
 		GameObject detailScriptGameObject = GameObject.Find ("Lists");
@@ -23,10 +26,12 @@ public class DetailSpawner : MonoBehaviour
 //			}
 //
 //		}
+		chance = 100 - detailScript.chanceToSpawn;
+
 
 		foreach(GameObject sp in spawnpoints)
 		{
-			bool onOff = (Random.value > detailScript.chanceToSpawn/100);
+			bool onOff = (Random.value > chance/100);
 			if (onOff)
 			{
 				GameObject go;

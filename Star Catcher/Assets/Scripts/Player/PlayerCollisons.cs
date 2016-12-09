@@ -22,6 +22,8 @@ public class PlayerCollisons : MonoBehaviour
 	int loseStarAmount;
 	float savedSpeed;
 
+	Pause pauseScript;
+
 	//Public Variables
 	public float invinciblitySeconds = 3;
 	public int secondsToLose = 10;
@@ -30,6 +32,7 @@ public class PlayerCollisons : MonoBehaviour
 	{
 		rabbitRB = GetComponent<Rigidbody> ();
 		anim = GetComponent<Animator> ();
+		pauseScript = GameObject.Find ("Canvas").GetComponent<Pause> ();
 
 		if (Prefabs.wolf == null)
 			print ("PlayerCollisions: No wolf prefab");
@@ -62,7 +65,7 @@ public class PlayerCollisons : MonoBehaviour
 		}
 
 		if (coll.gameObject.layer == LayerMask.NameToLayer("DeathZone"))
-			StaticVars.GameOver ();
+			pauseScript.GameOver ();
 	}	
 		
 	void OnCollisionStay(Collision coll)

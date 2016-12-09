@@ -8,10 +8,12 @@ public class TimeText : MonoBehaviour
 	float timeMin;
 	float timeSec;
 	string otherText;
+	Pause pauseScript;
 
 	void Start()
 	{
 		timeText = GetComponent<Text> ();
+		pauseScript = GameObject.Find ("Canvas").GetComponent<Pause> ();
 	}
 
 	void FixedUpdate()
@@ -21,6 +23,6 @@ public class TimeText : MonoBehaviour
 		timeText.text = "Time: " + otherText;
 
 		if (Mathf.Floor(StaticVars.time) <= 0)
-			StaticVars.GameOver ();
+			pauseScript.GameOver ();
 	}
 }

@@ -6,12 +6,25 @@ public class CameraMove : MonoBehaviour
 	[Range(0,0.3f)]
 	public float cameraSpeed = .15f;
 
+	StarSpawner starSpawner;
+
 	Rigidbody camRB;
 
 	void Start()
 	{
 		camRB = GetComponent<Rigidbody> ();
-//		MoveCamera ();
+		starSpawner = GameObject.Find ("StarSpawner").GetComponent<StarSpawner> ();
+
+		if (StaticVars.currentDifficulty == StaticVars.Difficulty.Easy) 
+		{
+			cameraSpeed -= 0.05f;
+			starSpawner.spawnSeconds -= .5f;
+		} 
+		else if (StaticVars.currentDifficulty == StaticVars.Difficulty.Unfair)
+		{
+			cameraSpeed += 0.1f;
+			starSpawner.spawnSeconds += .5f;
+		}
 	}
 		
 	void Update ()
@@ -19,14 +32,4 @@ public class CameraMove : MonoBehaviour
 		if(!StaticVars.isPaused)
 			transform.Translate (cameraSpeed, 0, 0);
 	}
-//
-//	 void StopCamera()
-//	{
-//		camRB.velocity = new Vector3(0, 0, 0);	
-//	}
-//
-//	void MoveCamera()
-//	{
-//		camRB.AddForce (new Vector3(500, 0, 0), ForceMode.VelocityChange);
-//	}
 }

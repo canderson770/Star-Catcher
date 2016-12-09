@@ -260,6 +260,19 @@ namespace DigitalRuby.RainMaker
                 }
                 rainRenderer.material = rainMistMaterial;
             }
+
+			if (StaticVars.currentDifficulty == StaticVars.Difficulty.Easy) 
+			{
+				RainIntensity = .3f;
+			} 
+			else if (StaticVars.currentDifficulty == StaticVars.Difficulty.Normal) 
+			{
+				RainIntensity = .6f;
+			}
+			else if (StaticVars.currentDifficulty == StaticVars.Difficulty.Unfair)
+			{
+				RainIntensity = .9f;
+			}
         }
 
         protected virtual void Update()

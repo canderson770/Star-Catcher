@@ -6,7 +6,7 @@ public class FinalScoreText : MonoBehaviour
 {
 	Text scoreText;
 
-	void Start()
+	void Awake()
 	{
 		scoreText = GetComponent<Text> ();
 	}

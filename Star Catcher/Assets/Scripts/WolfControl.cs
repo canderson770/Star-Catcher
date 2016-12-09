@@ -11,6 +11,15 @@ public class WolfControl : MonoBehaviour
 
 	void Start () 
 	{
+		if (StaticVars.currentDifficulty == StaticVars.Difficulty.Easy) 
+		{
+			wolfSpeed -= 5;
+		} 
+		else if (StaticVars.currentDifficulty == StaticVars.Difficulty.Unfair)
+		{
+			wolfSpeed += 10;
+		}
+
 		wolfRb = GetComponent<Rigidbody> ();
 		speedModifier = Random.Range (20, 25);
 

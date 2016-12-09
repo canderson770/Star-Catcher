@@ -7,14 +7,18 @@ public class SafeDetailSpawner : MonoBehaviour
 	public List<GameObject> spawnpoints;
 	DetailListScript detailScript;
 
+	float chance;
+
 	void Start () 
 	{
 		GameObject detailScriptGameObject = GameObject.Find ("Lists");
 		detailScript = detailScriptGameObject.GetComponent<DetailListScript> ();
 
+		chance = 100 - detailScript.chanceForSafe;
+
 		foreach(GameObject sp in spawnpoints)
 		{
-			bool onOff = (Random.value > detailScript.chanceToSpawn/100);
+			bool onOff = (Random.value > chance/100);
 			if (onOff)
 			{
 				GameObject go;

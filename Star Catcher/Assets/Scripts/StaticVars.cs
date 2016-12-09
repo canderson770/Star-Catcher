@@ -16,6 +16,10 @@ public class StaticVars : MonoBehaviour
 	public static bool isGrounded = false;
 	public static bool gameOver = false;
 
+	public enum Difficulty{Easy, Normal, Unfair}
+
+	public static Difficulty currentDifficulty = Difficulty.Normal;
+
 	public static void Reset()
 	{
 		score = 0;
@@ -25,9 +29,11 @@ public class StaticVars : MonoBehaviour
 		isPaused = false;
 	}
 
-	public static void GameOver()
-	{
-		StaticVars.gameOver = true;
-		StaticVars.isPaused = true;
-	}
+//	public static void GameOver()
+//	{
+//		gameOver = true;
+//		isPaused = true;
+//		int totalStars = starCount + PlayerPrefs.GetInt ("TotalStars", 0);
+//		PlayerPrefs.SetInt("TotalStars", totalStars);
+//	}		
 }

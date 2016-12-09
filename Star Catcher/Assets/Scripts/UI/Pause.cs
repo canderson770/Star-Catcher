@@ -4,15 +4,14 @@ using System.Collections;
 
 public class Pause : MonoBehaviour 
 {
-	public EventSystem myEventSystem;
-
 	public GameObject pausedPanel;
 	public GameObject HUD;
 
 	ChangeButtonText changeBtn;
 	FinalScoreText finalScore;
-	Animator anim;
+	Leaderboard leaderboardScript;
 
+	Animator anim;
 	GameObject seletedObj;
 	GameObject resumeButton;
 
@@ -21,40 +20,71 @@ public class Pause : MonoBehaviour
 		anim = GetComponent<Animator> ();
 		resumeButton = GameObject.Find ("ResumeButton");
 
-		GameObject resumeBtn = GameObject.Find ("Resume");
-		changeBtn = resumeBtn.GetComponent<ChangeButtonText> ();
+		changeBtn = GameObject.Find ("Resume").GetComponent<ChangeButtonText> ();
+		finalScore = GameObject.Find ("PauseScore").GetComponent<FinalScoreText> ();
+		leaderboardScript = GetComponent<Leaderboard> ();
 
-		GameObject finalScoreText = GameObject.Find ("PauseScore");
-		finalScore = finalScoreText.GetComponent<FinalScoreText> ();
+		UpdateUI();
 	}
-
 
 	void Update ()
 	{
-		if (Input.GetButtonDown("Cancel") && !StaticVars.gameOver)
+		if (Input.GetButtonDown ("Cancel") && !StaticVars.gameOver)
+		{
 			StaticVars.isPaused = !StaticVars.isPaused;
-
-		changeBtn.ChangeText ();
+			UpdateUI ();
+		}
 
 		if (StaticVars.isPaused) 
 		{
 			Time.timeScale = 0;
+
+			if (EventSystem.current.currentSelectedGameObject == null)
+				EventSystem.current.SetSelectedGameObject (seletedObj);
+			seletedObj = EventSystem.current.currentSelectedGameObject;
+		}
+		else
+			Time.timeScale = 1;
+	}
+
+	public void UpdateUI()
+	{
+		if (StaticVars.isPaused) 
+		{
+			changeBtn.ChangeText ();
 			pausedPanel.SetActive (true);
 			HUD.SetActive (false);
 			finalScore.UpdateScore ();
-			if (myEventSystem.currentSelectedGameObject == null)
-				myEventSystem.SetSelectedGameObject (seletedObj);
-
-			seletedObj = myEventSystem.currentSelectedGameObject;
+			EventSystem.current.SetSelectedGameObject(null);
 		}
 		else
 		{
-			Time.timeScale = 1;
 			pausedPanel.SetActive (false);
 			HUD.SetActive (true);
-			myEventSystem.SetSelectedGameObject(null);
+			EventSystem.current.SetSelectedGameObject(null);
 		}
 
 		anim.SetBool ("Pause", StaticVars.isPaused);
+	}
+
+	public void GameOver()
+	{
+		StaticVars.gameOver = true;
+		StaticVars.isPaused = true;
+		UpdateUI();
+
+		int totalStars = StaticVars.starCount + PlayerPrefs.GetInt ("TotalStars", 0);
+		PlayerPrefs.SetInt("TotalStars", totalStars);
+
+		leaderboardScript.CheckForHighScore ();
+//		StartCoroutine (WaitToCheckScore ());
+	}	
+
+	IEnumerator WaitToCheckScore()
+	{
+		yield return new WaitForSeconds (1);
+		print ("check");
+		leaderboardScript.CheckForHighScore ();
+
 	}
 }

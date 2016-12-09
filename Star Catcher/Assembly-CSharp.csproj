@@ -45,7 +45,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\DifficultyText.cs" />
+     <Compile Include="Assets\InputName.cs" />
      <Compile Include="Assets\LandList.cs" />
+     <Compile Include="Assets\Leaderboard.cs" />
+     <Compile Include="Assets\MenuStarText.cs" />
      <Compile Include="Assets\RainMaker\Demo\DemoScript.cs" />
      <Compile Include="Assets\RainMaker\Demo\DemoScript2D.cs" />
      <Compile Include="Assets\RainMaker\Prefab\BaseRainScript.cs" />
