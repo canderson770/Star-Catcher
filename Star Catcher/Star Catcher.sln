@@ -1,9 +1,9 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{4C241C41-3590-C3A4-C017-FDB4EAA5AE36}") = "Star Catcher", "Assembly-CSharp.csproj", "{B731A2A6-A0DD-36A0-ABB5-119F49CD9CAD}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Star Catcher", "Assembly-CSharp.csproj", "{B731A2A6-A0DD-36A0-ABB5-119F49CD9CAD}"
 EndProject
-Project("{4C241C41-3590-C3A4-C017-FDB4EAA5AE36}") = "Star Catcher", "Assembly-CSharp-Editor.csproj", "{10666BE9-4A48-55B9-C357-175A31DE3359}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Star Catcher", "Assembly-CSharp-Editor.csproj", "{10666BE9-4A48-55B9-C357-175A31DE3359}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
