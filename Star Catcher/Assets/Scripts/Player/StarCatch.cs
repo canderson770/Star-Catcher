@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class StarCatch : MonoBehaviour 
@@ -7,8 +7,9 @@ public class StarCatch : MonoBehaviour
 	StarsText starsText;
 	UIBar uiBar;
 
-	//Public Variable
-	public AudioClip clip;
+    //Public Variable
+    //public AudioClip clip;
+    public AudioSource source;
 
 	void Start()
 	{
@@ -26,8 +27,9 @@ public class StarCatch : MonoBehaviour
 			Destroy (coll.gameObject.transform.parent.gameObject);
 			StaticVars.starCount++; 
 			StaticVars.starBarCount++;
-			AudioSource.PlayClipAtPoint (clip, coll.transform.position);
-			starsText.UpdateStars ();
+            //AudioSource.PlayClipAtPoint (clip, coll.transform.position);
+            source.Play();
+            starsText.UpdateStars ();
 			uiBar.UpdateBar ();
 		}	
 	}

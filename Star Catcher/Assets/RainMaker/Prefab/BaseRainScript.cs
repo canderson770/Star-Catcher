@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace DigitalRuby.RainMaker
 {
@@ -54,10 +55,10 @@ namespace DigitalRuby.RainMaker
 
         [Tooltip("Whether wind should be enabled.")]
         public bool EnableWind = true;
-	
-		[Tooltip("lol")]
-		[Range(0,1)]
-		public float maxVolume;
+
+        [Tooltip("lol")]
+        [Range(0, 1)]
+        public float maxVolume;
 
         protected LoopingAudioSource audioSourceRainLight;
         protected LoopingAudioSource audioSourceRainMedium;
@@ -70,6 +71,7 @@ namespace DigitalRuby.RainMaker
 
         private float lastRainIntensityValue = -1.0f;
         private float nextWindTime;
+        public AudioMixerGroup mixerGroup;
 
         private void UpdateWind()
         {
@@ -157,10 +159,10 @@ namespace DigitalRuby.RainMaker
                             audioSourceRainCurrent.Stop();
                         }
                         audioSourceRainCurrent = newSource;
-						audioSourceRainCurrent.Play(maxVolume);
+                        audioSourceRainCurrent.Play(maxVolume);
                     }
-					if (audioSourceRainCurrent.AudioSource.volume != maxVolume)
-						audioSourceRainCurrent.SetVolume (maxVolume);
+                    if (audioSourceRainCurrent.AudioSource.volume != maxVolume)
+                        audioSourceRainCurrent.SetVolume(maxVolume);
                     if (RainFallParticleSystem != null)
                     {
                         ParticleSystem.EmissionModule e = RainFallParticleSystem.emission;
@@ -220,9 +222,17 @@ namespace DigitalRuby.RainMaker
             }
 
             audioSourceRainLight = new LoopingAudioSource(this, RainSoundLight);
+            audioSourceRainLight.AudioSource.outputAudioMixerGroup = mixerGroup;
+
             audioSourceRainMedium = new LoopingAudioSource(this, RainSoundMedium);
+            audioSourceRainMedium.AudioSource.outputAudioMixerGroup = mixerGroup;
+
             audioSourceRainHeavy = new LoopingAudioSource(this, RainSoundHeavy);
+            audioSourceRainHeavy.AudioSource.outputAudioMixerGroup = mixerGroup;
+
             audioSourceWind = new LoopingAudioSource(this, WindSound);
+            audioSourceWind.AudioSource.outputAudioMixerGroup = mixerGroup;
+
 
             if (RainFallParticleSystem != null)
             {
@@ -261,18 +271,18 @@ namespace DigitalRuby.RainMaker
                 rainRenderer.material = rainMistMaterial;
             }
 
-			if (StaticVars.currentDifficulty == StaticVars.Difficulty.Easy) 
-			{
-				RainIntensity = .3f;
-			} 
-			else if (StaticVars.currentDifficulty == StaticVars.Difficulty.Normal) 
-			{
-				RainIntensity = .6f;
-			}
-			else if (StaticVars.currentDifficulty == StaticVars.Difficulty.Unfair)
-			{
-				RainIntensity = .9f;
-			}
+            if (StaticVars.currentDifficulty == StaticVars.Difficulty.Easy)
+            {
+                RainIntensity = .3f;
+            }
+            else if (StaticVars.currentDifficulty == StaticVars.Difficulty.Normal)
+            {
+                RainIntensity = .6f;
+            }
+            else if (StaticVars.currentDifficulty == StaticVars.Difficulty.Unfair)
+            {
+                RainIntensity = .9f;
+            }
         }
 
         protected virtual void Update()
@@ -327,16 +337,16 @@ namespace DigitalRuby.RainMaker
         {
             AudioSource = script.gameObject.AddComponent<AudioSource>();
             AudioSource.loop = true;
-			AudioSource.priority = 256;
+            AudioSource.priority = 256;
             AudioSource.clip = clip;
             AudioSource.Stop();
-			TargetVolume = 1f;
+            TargetVolume = 1f;
         }
 
-		public void SetVolume(float _max)
-		{
-			TargetVolume = _max;	
-		}
+        public void SetVolume(float _max)
+        {
+            TargetVolume = _max;
+        }
 
         public void Play(float targetVolume)
         {
@@ -353,7 +363,7 @@ namespace DigitalRuby.RainMaker
             TargetVolume = 0.0f;
         }
 
-		public void Update()
+        public void Update()
         {
             if (AudioSource.isPlaying && (AudioSource.volume = Mathf.Lerp(AudioSource.volume, TargetVolume, Time.deltaTime)) == 0.0f)
             {

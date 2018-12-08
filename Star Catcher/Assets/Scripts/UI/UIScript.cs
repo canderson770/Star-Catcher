@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
@@ -76,7 +76,7 @@ public class UIScript : MonoBehaviour
 			unfairDifficulty = GameObject.Find ("UnfairButton");
 			selectedGlow = GameObject.Find ("SelectedImage");
 
-			difficultyButton = GameObject.Find ("Difficulty");
+			difficultyButton = GameObject.Find ("BackOptions");
 			subLastButton = difficultyButton;
 
 

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CameraMove : MonoBehaviour 
@@ -27,7 +27,7 @@ public class CameraMove : MonoBehaviour
 		}
 	}
 		
-	void Update ()
+	void FixedUpdate ()
 	{
 		if(!StaticVars.isPaused)
 			transform.Translate (cameraSpeed, 0, 0);

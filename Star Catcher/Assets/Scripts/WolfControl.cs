@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class WolfControl : MonoBehaviour 
@@ -34,7 +34,7 @@ public class WolfControl : MonoBehaviour
 		Destroy (gameObject, 3);
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
 		wolfRb.velocity = Vector3.zero;
 		wolfRb.AddForce (new Vector3 (-StaticVars.randomNegPos * (wolfSpeed + speedModifier), -10, 0), ForceMode.VelocityChange);
